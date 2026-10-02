@@ -423,7 +423,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <button class="btn danger" id="wipeBtn">Delete everything</button>
       </div>
     </div>
-    <div class="small muted">Doodle Days v1.0 · Works offline · No account, no ads</div>
+    <div class="small muted">Doodle Days v1.1 · Works offline · No account, no ads</div>
   </div>
 </div>
 
@@ -910,14 +910,17 @@ function loadSample(){
   const firstTue=[...Array(7)].map((_,i)=>K(y,m,i+1)).find(k=>parseK(k).getDay()===2);
   addEv({title:'Pottery class',date:firstTue,time:'18:30',repeat:'weekly',remind:60});
   addEv({title:'Etsy listing photos',date:K(y,m,21)});
-  S.meta.sample=true; S.meta.sampleDays=(S.meta.sampleDays||[]).concat(days); S.meta.sampleEvents=(S.meta.sampleEvents||[]).concat(evs); S.meta.sampleTrackers=tr;
+  S.meta.sample=true; S.meta.sampleDays=(S.meta.sampleDays||[]).concat(days); S.meta.sampleEvents=(S.meta.sampleEvents||[]).concat(evs); S.meta.sampleTrackers=(S.meta.sampleTrackers||[]).concat(tr);
   saveMeta(); openDay(sel,false);
 }
 $('#clearSample').onclick=()=>{
   (S.meta.sampleDays||[]).forEach(k=>{delete S.days[k];DB.del('d:'+k);});
   (S.meta.sampleEvents||[]).forEach(id=>delEvent(id));
-  S.meta.sample=false;S.meta.sampleDays=[];S.meta.sampleEvents=[];saveMeta();openDay(sel,false);
-  toast('Examples cleared. The example trackers are kept, so remove the ones you don’t need.',3500);
+  const used=new Set();Object.values(S.days).forEach(e=>(e.tags||[]).forEach(id=>used.add(id)));
+  const st=S.meta.sampleTrackers||[];const kept=S.meta.trackers.filter(t=>st.includes(t.id)&&used.has(t.id));
+  S.meta.trackers=S.meta.trackers.filter(t=>!st.includes(t.id)||used.has(t.id));
+  S.meta.sample=false;S.meta.sampleDays=[];S.meta.sampleEvents=[];S.meta.sampleTrackers=[];saveMeta();openDay(sel,false);
+  toast(kept.length?`Examples cleared. Kept ${kept.map(t=>'“'+t.name+'”').join(', ')} because you've used ${kept.length>1?'them':'it'}.`:'Examples cleared. The calendar is all yours.',3500);
 };
 
 /* ================= wiring ================= */
