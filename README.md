@@ -5,3 +5,6 @@ A free calendar you can draw in. Doodle, plan and track your making, one day at 
 - Works on phones, tablets (stylus friendly) and computers
 - Installs to the home screen and works offline
 - Everything is stored on the user's own device; Settings > Backup saves a backup file
+
+To update the app: replace the files in this repository with new ones. In `sw.js`, change
+`doodle-days-v1` to `doodle-days-v2` (v3, ...) each time, so installed copies pick up the update.
