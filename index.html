@@ -341,6 +341,18 @@ canvas{display:block;width:100%;aspect-ratio:3/2;touch-action:none;border-radius
 .stk{aspect-ratio:1;border:1px solid transparent;border-radius:8px;background:var(--sheet);padding:4px}
 .stk.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
 .stk img{width:100%;height:100%;display:block}
+.tool-stk{background:var(--accent);border-color:var(--accent);color:var(--on-accent);display:inline-flex;align-items:center;gap:5px}
+.tool-stk img{width:18px;height:18px;display:block}
+.tool-stk.on{background:var(--accent);box-shadow:0 0 0 2px var(--today)}
+.quick{display:flex;gap:6px;align-items:center;margin-top:12px;overflow-x:auto;padding:3px 2px;scrollbar-width:none}
+.qlabel{flex:none;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-right:2px}
+.qs{flex:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--sheet);padding:4px}
+.qs img{width:100%;height:100%;display:block}
+.qs.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.qmore{flex:none;border:1.5px dashed var(--accent);background:var(--accent-soft);color:var(--fg);border-radius:10px;padding:0 12px;height:42px;font-weight:700;font-size:.82rem;white-space:nowrap}
+.qm-short{display:none}
+@media (max-width:480px){.qlabel{display:none}.qs:nth-of-type(n+6){display:none}.qm-long{display:none}.qm-short{display:inline}.quick{overflow:visible}}
+@media (prefers-reduced-motion:no-preference){.qs{transition:transform .12s}.qs:active{transform:scale(.9)}}
 .packtabs{grid-column:1/-1;display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
 .packtabs .chipbtn{white-space:nowrap;flex:none}
 .stk.stk-locked{opacity:.45}
@@ -499,6 +511,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <div class="tools" role="toolbar" aria-label="Drawing tools" id="tools"></div>
         <div class="tray" id="tray" hidden style="margin-top:8px"></div>
         <div class="card"><div class="cheer" id="cheer" hidden></div><canvas id="pad" width="900" height="600" aria-label="Drawing area for this day"></canvas></div>
+        <div class="quick" id="quick" aria-label="Quick stickers"></div>
       </section>
       <section>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px">
@@ -612,7 +625,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <button class="btn danger" id="wipeBtn">Delete everything</button>
       </div>
     </div>
-    <div class="small muted">Doodle Days v2.6 · Works offline · No account, no ads</div>
+    <div class="small muted">Doodle Days v2.7 · Works offline · No account, no ads</div>
   </div>
 </div>
 
@@ -1064,12 +1077,21 @@ function buildTools(){
   kids.push(h('span',{class:'sep'}));
   SIZES.forEach(s=>kids.push(h('button',{class:'size'+(s===size?' on':''),'aria-label':`Size ${s}`,onclick:()=>{size=s;buildTools();}},h('b',{style:`width:${Math.max(4,s*.9)}px;height:${Math.max(4,s*.9)}px`}))));
   kids.push(h('span',{class:'sep'}));
-  [['pen','Pen'],['marker','Marker'],['eraser','Eraser'],['sticker','Stickers']].forEach(([id,lab])=>kids.push(h('button',{class:'tool'+(tool===id?' on':''),'aria-pressed':String(tool===id),onclick:()=>{tool=id;$('#tray').hidden=id!=='sticker';if(id==='sticker'&&!sticker)sticker=STICKERS[0].id;buildTools();buildTray();}},lab)));
+  [['pen','Pen'],['marker','Marker'],['eraser','Eraser'],['sticker','Stickers']].forEach(([id,lab])=>kids.push(h('button',{class:'tool'+(id==='sticker'?' tool-stk':'')+(tool===id?' on':''),'aria-pressed':String(tool===id),onclick:()=>{tool=id;$('#tray').hidden=id!=='sticker';if(id==='sticker'&&!sticker)sticker=STICKERS[0].id;buildTools();buildTray();}},id==='sticker'?[h('img',{src:STICKERS[0].src,alt:''}),lab]:lab)));
   kids.push(h('button',{class:'tool',onclick:()=>{if(!undo.length)return;ctx.putImageData(undo.pop(),0,0);storeDoodle();}},'Undo'));
   const clr=h('button',{class:'tool'},'Clear'); clr.onclick=()=>armed(clr,'Clear?',()=>{pushUndo();ctx.clearRect(0,0,cv.width,cv.height);storeDoodle();});
   kids.push(clr);
   if(penSeen) kids.push(h('button',{class:'tool'+(S.meta.penOnly?' on':''),title:'Ignore fingers and palms while drawing',onclick:()=>{S.meta.penOnly=!S.meta.penOnly;saveMeta();buildTools();toast(S.meta.penOnly?'Stylus only: your palm and fingers won’t draw.':'Fingers can draw again.');}},'Stylus only'));
   t.replaceChildren(...kids);
+  if(typeof buildQuick==='function'&&$('#quick')) buildQuick();
+}
+const ALLST=Object.fromEntries(PACKS.flatMap(p=>p.items.map(st=>[st.id,{...st,pack:p}])));
+function buildQuick(){
+  const ok=id=>ALLST[id]&&(ALLST[id].pack.free||unlocked());
+  const ids=[...new Set([...(S.meta.recentStickers||[]),...STICKERS.map(x=>x.id)])].filter(ok).slice(0,7);
+  $('#quick').replaceChildren(h('span',{class:'qlabel'},'Stickers'),
+    ...ids.map(id=>h('button',{class:'qs'+(tool==='sticker'&&sticker===id?' on':''),'aria-label':`Use sticker ${id.replace(/^[a-z]-/,'')}`,onclick:()=>{tool='sticker';sticker=id;$('#tray').hidden=true;buildTools();buildTray();toast('Tap the page to place it.',1600);}},h('img',{src:ALLST[id].src,alt:''}))),
+    h('button',{class:'qmore',onclick:()=>{tool='sticker';if(!sticker)sticker=STICKERS[0].id;$('#tray').hidden=false;buildTools();buildTray();$('#tray').scrollIntoView({block:'nearest',behavior:reduced()?'auto':'smooth'});}},h('span',{class:'qm-long'},'All stickers ›'),h('span',{class:'qm-short'},'More ›')));
 }
 let trayPack='starter';
 function buildTray(){
@@ -1107,7 +1129,7 @@ cv.addEventListener('pointerdown',ev=>{
   if(drawing) return;
   ev.preventDefault(); try{cv.setPointerCapture(ev.pointerId);}catch(e){}
   pushUndo(); const p=pos(ev);
-  if(tool==='sticker'){const img=stickerImg[sticker];const s=[70,120,190][SIZES.indexOf(size)];if(img&&img.complete){ctx.globalCompositeOperation='source-over';ctx.drawImage(img,p.x-s/2,p.y-s/2,s,s);storeDoodle();SND.pop();buzz(8);if(Math.random()<.3)cheer(pick(['cute!','perfect spot','aww']));}return;}
+  if(tool==='sticker'){const img=stickerImg[sticker];const s=[70,120,190][SIZES.indexOf(size)];if(img&&img.complete){ctx.globalCompositeOperation='source-over';ctx.drawImage(img,p.x-s/2,p.y-s/2,s,s);storeDoodle();SND.pop();buzz(8);S.meta.recentStickers=[sticker,...(S.meta.recentStickers||[]).filter(x=>x!==sticker)].slice(0,12);saveMeta();buildQuick();if(Math.random()<.3)cheer(pick(['cute!','perfect spot','aww']));}return;}
   drawing=true; pid=ev.pointerId; last=p; pts=[p];
   if(tool==='marker'){snap=undo[undo.length-1];}
   ctx.globalCompositeOperation=tool==='eraser'?'destination-out':'source-over';
