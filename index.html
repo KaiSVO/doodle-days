@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Fredoka:wght@500;600;700&family=Silkscreen&family=Fraunces:ital,opsz,wght@1,9..144,500&display=swap">
 <style>
 /* Layout: cutting-mat header; views (month / year / list) on dot-grid paper; day editor as a side panel on wide screens and a full sheet on phones; tab bar at the bottom on phones */
 :root{
@@ -28,7 +28,7 @@
   --display:"Caveat Brush","Comic Sans MS","Bradley Hand",cursive;
   --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --r:12px; --tabh:62px;
+  --r:12px; --rs:9px; --tabh:62px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -48,6 +48,110 @@
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+
+/* ---- skins ---- */
+:root[data-skin="candy"]{--bg:#F6F1FF;--dot:#E4DAFB;--surface:#FFFFFF;--surface-2:#F3EEFF;--fg:#24154F;--muted:#6C5FA0;--line:#E3DAFA;
+  --mat:#6C3CF0;--mat-line:rgba(255,255,255,.10);--on-mat:#FFFFFF;--accent:#6C3CF0;--on-accent:#FFFFFF;--accent-soft:#ECE5FF;--today:#FF7AC6;
+  --display:"Fredoka","Figtree",system-ui,sans-serif;--r:20px;--rs:14px}
+:root[data-skin="candy"][data-theme="dark"]{--bg:#140C2E;--dot:#24194A;--surface:#1E1442;--surface-2:#180F38;--fg:#F2EDFF;--muted:#A99BD6;--line:#33276A;
+  --mat:#4B22C9;--on-mat:#FFFFFF;--accent:#B69CFF;--on-accent:#140C2E;--accent-soft:#2C1F5E;--today:#FF7AC6;--scrim:rgba(0,0,0,.6);color-scheme:dark}
+:root[data-skin="pixel"]{--bg:#16131F;--dot:#221D30;--surface:#1F1A2C;--surface-2:#2A2438;--fg:#F4EFFF;--muted:#A59CC2;--line:#3A3350;
+  --mat:#241E35;--mat-line:rgba(255,255,255,.05);--on-mat:#FFD166;--accent:#06D6A0;--on-accent:#0B1A14;--accent-soft:#1D3A33;--today:#FFD166;--danger:#FF6B6B;
+  --display:"Silkscreen","DM Mono",monospace;--r:0px;--rs:0px;--scrim:rgba(0,0,0,.65);color-scheme:dark}
+:root[data-skin="scrapbook"]{--bg:#F5E6D3;--dot:#E3CCB1;--surface:#FFFBF5;--surface-2:#FBF1E4;--fg:#4A2A17;--muted:#8A6A55;--line:#E8D2BA;
+  --mat:#A0643C;--mat-line:rgba(255,255,255,.12);--on-mat:#FFF6EA;--accent:#D84F78;--on-accent:#FFFFFF;--accent-soft:#FBE0E8;--today:#F5B83D;
+  --display:"Caveat Brush","Bradley Hand",cursive;--r:6px;--rs:4px}
+:root[data-skin="garden"]{--bg:#EEF2E8;--dot:#DCE4D2;--surface:#FBFCF8;--surface-2:#F3F6EE;--fg:#2F4230;--muted:#6F806C;--line:#DAE3D2;
+  --mat:#5E7F58;--mat-line:rgba(255,255,255,.10);--on-mat:#F6FAF2;--accent:#5E7F58;--on-accent:#FFFFFF;--accent-soft:#E3ECDC;--today:#E7A9B8;
+  --display:"Fraunces",Georgia,serif;--r:18px;--rs:12px}
+:root[data-skin="pixel"] *{border-radius:0!important}
+:root[data-skin="pixel"] body{background-image:linear-gradient(var(--dot) 1px,transparent 1px),linear-gradient(90deg,var(--dot) 1px,transparent 1px)}
+:root[data-skin="pixel"] .brand{font-size:1.5rem}
+:root[data-skin="pixel"] .month{font-size:1.5rem}
+:root[data-skin="pixel"] .ed-date,:root[data-skin="pixel"] .dialog h2{font-size:1.25rem}
+:root[data-skin="pixel"] .sn{font-size:1.9rem}
+:root[data-skin="pixel"] .day,:root[data-skin="pixel"] .tcard,:root[data-skin="pixel"] .btn,:root[data-skin="pixel"] .icon-btn,:root[data-skin="pixel"] .done{border-width:2px}
+:root[data-skin="candy"] .brand,:root[data-skin="candy"] .month,:root[data-skin="candy"] .ed-date,:root[data-skin="candy"] .sn,:root[data-skin="candy"] .dialog h2,:root[data-skin="candy"] .rv-stat b{font-weight:700}
+:root[data-skin="candy"] .btn,:root[data-skin="candy"] .icon-btn,:root[data-skin="candy"] .tool,:root[data-skin="candy"] .tab{border-radius:14px;font-weight:700}
+:root[data-skin="candy"] .day.today{border-color:var(--today);border-width:2px}
+:root[data-skin="scrapbook"] .day{border-style:dashed}
+:root[data-skin="scrapbook"] .day:nth-child(4n+1){transform:rotate(-.7deg)}
+:root[data-skin="scrapbook"] .day:nth-child(5n+2){transform:rotate(.6deg)}
+:root[data-skin="scrapbook"] .tcard:nth-child(odd){transform:rotate(-.5deg)}
+:root[data-skin="garden"] .brand,:root[data-skin="garden"] .month,:root[data-skin="garden"] .ed-date,:root[data-skin="garden"] .sn,:root[data-skin="garden"] .dialog h2{font-style:italic;font-weight:500}
+
+/* ---- trackers as streak cards ---- */
+.sum-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.tcard{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.tc-head{display:flex;align-items:center;gap:8px}
+.tc-name{flex:1;min-width:0;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tc-body{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tc-streak{min-width:0}
+.big{display:flex;align-items:center;gap:4px}
+.flame{display:inline-flex}
+.sn{font-family:var(--display);font-size:2.4rem;line-height:1}
+.sl{font-size:.78rem;color:var(--muted)}
+.week{display:flex;gap:4px;margin-top:7px}
+.wd{width:16px;height:16px;border-radius:5px;background:var(--surface);border:1px solid var(--line);display:block}
+.wd.now{outline:2px solid var(--today);outline-offset:1px}
+.hint{font-size:.76rem;color:var(--muted);margin-top:6px}
+.done{border:1.5px solid var(--chip);background:transparent;border-radius:999px;padding:9px;font-weight:700;color:var(--fg)}
+.done.on{background:var(--chip);color:var(--on-chip)}
+.w-ring svg{display:block}
+.w-xp{width:128px;flex:none}
+.xp-top{display:flex;justify-content:space-between;gap:6px;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.xp-top b{color:var(--today);font-weight:500}
+.xp-bar{display:flex;gap:2px;background:var(--surface);padding:3px;border:1px solid var(--line);margin-top:4px}
+.xp-bar i{flex:1;height:10px;background:var(--line);display:block}
+.xp-goal{font-family:var(--mono);font-size:.7rem;color:var(--muted);margin-top:4px}
+.w-jar{display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--mono);font-size:.72rem;color:var(--muted);flex:none}
+.jar{width:54px;height:74px;border:2px solid var(--muted);border-top-width:5px;border-radius:5px 5px 14px 14px;background:var(--surface);display:flex;flex-wrap:wrap-reverse;align-content:flex-start;gap:2px;padding:3px;overflow:hidden}
+.jar i{width:9px;height:9px;border-radius:50%;display:block}
+.w-stamps{display:grid;grid-template-columns:repeat(6,16px);gap:3px;flex:none}
+.w-stamps i{width:16px;height:16px;border-radius:50%;border:1.5px dashed var(--line);font-size:.58rem;display:grid;place-items:center;font-style:normal;font-weight:700}
+.w-stamps .count{grid-column:1/-1;font-size:.7rem}
+
+/* ---- celebrations ---- */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:90;overflow:hidden}
+.cf{position:absolute;width:8px;height:12px;border-radius:2px;display:block}
+.cheer{position:absolute;top:12px;right:14px;z-index:2;background:var(--accent);color:var(--on-accent);font-family:var(--display);font-size:1.05rem;padding:2px 12px;border-radius:99px;pointer-events:none;transform:rotate(-3deg)}
+.cheer.show{animation:cheer 1.8s ease forwards}
+@keyframes cheer{0%{opacity:0;transform:translateY(6px) rotate(-3deg)}12%{opacity:1;transform:translateY(0) rotate(-3deg)}80%{opacity:1}100%{opacity:0;transform:translateY(-6px) rotate(-3deg)}}
+
+/* ---- monthly reveal ---- */
+.reveal{width:min(100%,660px)}
+.rv-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:520px){.rv-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rv-stat{background:var(--accent-soft);border-radius:var(--rs);padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.rv-stat b{font-family:var(--display);font-size:2rem;line-height:1;font-weight:400}
+.rv-stat span{font-size:.78rem;color:var(--muted)}
+.rv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.rv-pic{position:relative;aspect-ratio:1;background:var(--sheet);border-radius:var(--rs);overflow:hidden;border:1px solid var(--line)}
+.rv-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.rv-pic span{position:absolute;top:6px;left:6px;background:var(--accent);color:var(--on-accent);font-family:var(--mono);font-size:.72rem;padding:1px 6px;border-radius:6px}
+.rv-tr{display:flex;flex-direction:column;gap:8px}
+.rv-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rv-row .nm{font-weight:700;flex:1;min-width:0}
+.badge{background:var(--today);color:#1E2621;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px}
+.reveal-banner{border-style:solid;border-color:var(--today);background:var(--surface)}
+
+/* ---- settings: themes ---- */
+.skins{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.skin{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface-2);border-radius:var(--rs);padding:8px 10px;text-align:left;font-weight:600;font-size:.88rem}
+.skin.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.skin-sw{display:flex;flex:none}
+.skin-sw i{width:12px;height:22px;display:block}
+.skin-sw i:first-child{border-radius:6px 0 0 6px}
+.skin-sw i:last-child{border-radius:0 6px 6px 0}
+.skn{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.lock{font-size:.62rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.swatches{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flabel{font-size:.8rem;font-weight:600;color:var(--muted)}
+.switch{display:flex;align-items:center;gap:10px;font-weight:600}
+.switch input{width:20px;height:20px;accent-color:var(--accent)}
+.chipbtn{border:1px solid var(--line);background:var(--surface-2);border-radius:99px;padding:4px 10px;font-size:.8rem;font-weight:600}
+.chipbtn.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
 html,body{margin:0}
 img{max-width:100%}
 body{
@@ -106,7 +210,7 @@ h1,h2,h3{text-wrap:balance}
 .nav{display:flex;gap:6px}
 .dow,.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
 .dow div{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:0 4px 4px}
-.day{position:relative;min-width:0;aspect-ratio:1/1.1;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:6px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.day{position:relative;min-width:0;aspect-ratio:1/1.1;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--rs);padding:6px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
 .day:hover{border-color:var(--accent)}
 .day.out{background:transparent;border-style:dashed;opacity:.4;pointer-events:none}
 .day.sel{outline:2px solid var(--accent);outline-offset:-1px}
@@ -257,6 +361,10 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
 
 <div class="main">
   <div class="view-wrap" style="min-width:0">
+    <div class="banner reveal-banner" id="revealBanner" hidden>
+      <span id="revealText">Your month is ready.</span>
+      <button class="btn primary" id="revealOpen">Open</button>
+    </div>
     <div class="banner" id="banner" hidden>
       <span>These are example entries so you can see how it works. Clear them when you're ready to start your own.</span>
       <button class="btn" id="clearSample">Clear examples</button>
@@ -268,18 +376,15 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <div class="nav">
           <button class="icon-btn" id="prevM" aria-label="Previous month">←</button>
           <button class="btn" id="todayBtn">Today</button>
+          <button class="btn" id="revealBtn">✦ Your month</button>
           <button class="icon-btn" id="nextM" aria-label="Next month">→</button>
         </div>
       </div>
       <div class="dow" id="dow" aria-hidden="true"></div>
       <div class="grid" id="grid"></div>
       <div class="summary">
-        <p class="label" id="sumTitle">Trackers this month</p>
-        <div id="trackers"></div>
-        <form class="addrow" id="addTracker">
-          <input type="text" id="newTracker" placeholder="Add something to track, e.g. Pottery" maxlength="28" aria-label="New tracker name">
-          <button class="btn primary" type="submit">Add tracker</button>
-        </form>
+        <div class="sum-head"><p class="label" id="sumTitle" style="margin:0">Trackers</p><button class="btn" id="newTracker">+ New tracker</button></div>
+        <div class="tcards" id="tcards"></div>
       </div>
     </section>
 
@@ -321,7 +426,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <p class="label">Doodle</p>
         <div class="tools" role="toolbar" aria-label="Drawing tools" id="tools"></div>
         <div class="tray" id="tray" hidden style="margin-top:8px"></div>
-        <div class="card"><canvas id="pad" width="900" height="600" aria-label="Drawing area for this day"></canvas></div>
+        <div class="card"><div class="cheer" id="cheer" hidden></div><canvas id="pad" width="900" height="600" aria-label="Drawing area for this day"></canvas></div>
       </section>
       <section>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px">
@@ -379,6 +484,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
     <div class="support">
       <strong>Doodle Days Supporter</strong>
       <span class="small">The app stays free. A one-time Supporter unlock adds extras and keeps it going:</span>
+      <div class="perk"><span>★</span><span>Two extra themes: Scrapbook and Cosy garden (try them in Theme below)</span></div>
       <div class="perk"><span>★</span><span>Extra sticker and stamp packs (Botanical, Market day, Cosy season)</span></div>
       <div class="perk"><span>★</span><span>More brushes and paper styles: watercolour wash, kraft, grid</span></div>
       <div class="perk"><span>★</span><span>Year in review poster of your doodles</span></div>
@@ -392,11 +498,22 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
     </div>
 
     <div class="set-sec">
-      <h3>Look and feel</h3>
+      <h3>Theme</h3>
+      <div class="skins" id="skins"></div>
+      <span class="flabel">Main colour</span>
+      <div class="swatches" id="accents"></div>
       <div class="row2">
-        <div class="field"><label for="setTheme">Theme</label><select id="setTheme"><option value="auto">Match my device</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
+        <div class="field"><label for="setTheme">Light or dark</label><select id="setTheme"><option value="auto">Match my device</option><option value="light">Light</option><option value="dark">Dark</option></select></div>
         <div class="field"><label for="setWeek">Week starts on</label><select id="setWeek"><option value="1">Monday</option><option value="0">Sunday</option></select></div>
       </div>
+      <div class="small muted" id="modeNote"></div>
+    </div>
+
+    <div class="set-sec">
+      <h3>Feel</h3>
+      <label class="switch"><input type="checkbox" id="setSound"> Sounds</label>
+      <label class="switch"><input type="checkbox" id="setVibe"> Vibration</label>
+      <label class="switch"><input type="checkbox" id="setCheers"> Little cheers while drawing</label>
     </div>
 
     <div class="set-sec">
@@ -423,7 +540,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <button class="btn danger" id="wipeBtn">Delete everything</button>
       </div>
     </div>
-    <div class="small muted">Doodle Days v1.1 · Works offline · No account, no ads</div>
+    <div class="small muted">Doodle Days v2.1 · Works offline · No account, no ads</div>
   </div>
 </div>
 
@@ -434,6 +551,31 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
   </div>
 </div>
 
+<div class="modal" id="trModal" hidden>
+  <form class="dialog" id="trForm" aria-labelledby="trTitle">
+    <h2 id="trTitle">New tracker</h2>
+    <div class="field"><label for="trName">Name</label><input type="text" id="trName" maxlength="28" placeholder="Pottery, Shop orders, Sketch a day" required></div>
+    <div class="field"><span class="flabel">Colour</span><div class="swatches" id="trColors"></div></div>
+    <div class="field"><label for="trGoal">Monthly goal in days (optional)</label><input type="number" id="trGoal" min="1" max="31" inputmode="numeric" placeholder="12"></div>
+    <p class="small muted" style="margin:0">Streaks forgive one missed day each week, so one busy day won't break them.</p>
+    <div class="actions">
+      <button type="button" class="btn danger" id="trDelete" hidden>Delete</button>
+      <span class="spacer"></span>
+      <button type="button" class="btn" id="trCancel">Cancel</button>
+      <button type="submit" class="btn primary">Save</button>
+    </div>
+  </form>
+</div>
+
+<div class="modal" id="revealModal" hidden>
+  <div class="dialog reveal" role="dialog" aria-labelledby="rvTitle">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h2 id="rvTitle">Your month</h2><button class="icon-btn" id="rvClose" aria-label="Close">✕</button></div>
+    <div id="rvBody" style="display:flex;flex-direction:column;gap:14px"></div>
+    <div class="actions"><button class="btn" id="rvPrev">← Earlier month</button><span class="spacer"></span><button class="btn primary" id="rvSave">Save as image</button></div>
+  </div>
+</div>
+
+<div id="fx" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script>
@@ -484,7 +626,7 @@ const DB={db:null,
   clear(){if(!this.db) return Promise.resolve(false);return new Promise(res=>{try{const tx=this.db.transaction('kv','readwrite');tx.objectStore('kv').clear();
     tx.oncomplete=()=>res(true);tx.onerror=()=>res(false);}catch(e){res(false);}});}
 };
-const defaultMeta=()=>({trackers:[],nextId:1,weekStart:1,theme:'auto',penOnly:false,sample:false,sampleDays:[],sampleEvents:[],fired:{}});
+const defaultMeta=()=>({trackers:[],nextId:1,weekStart:1,theme:'auto',skin:'candy',accent:null,sound:true,vibrate:true,cheers:true,revealed:{},penOnly:false,sample:false,sampleDays:[],sampleEvents:[],fired:{}});
 const S={meta:defaultMeta(),days:{},events:{}};
 const saveMeta=()=>DB.put('meta',S.meta);
 const dayTimers={};
@@ -542,7 +684,78 @@ const now=new Date();
 let view='month', vy=now.getFullYear(), vm=now.getMonth(), yy=now.getFullYear();
 let sel=todayK(), panelOpen=false, yearFilter='all';
 
-function applyTheme(){const t=S.meta.theme;if(t==='auto') document.documentElement.removeAttribute('data-theme');else document.documentElement.setAttribute('data-theme',t);}
+/* ================= themes, sound, celebrations ================= */
+const SKINS=[
+ {id:'candy',name:'Candy pop',sw:['#6C3CF0','#D7FF4A','#FF7AC6'],paid:false,tracker:'ring',modes:true},
+ {id:'pixel',name:'Pixel quest',sw:['#16131F','#06D6A0','#FFD166'],paid:false,tracker:'xp',modes:false},
+ {id:'classic',name:'Classic',sw:['#1F5C4A','#F2F4EF','#E9A23B'],paid:false,tracker:'ring',modes:true},
+ {id:'scrapbook',name:'Scrapbook',sw:['#A0643C','#F5E6D3','#D84F78'],paid:true,tracker:'stamps',modes:false},
+ {id:'garden',name:'Cosy garden',sw:['#5E7F58','#EEF2E8','#E7A9B8'],paid:true,tracker:'jar',modes:false},
+];
+const ACCENTS=['#6C3CF0','#D84F78','#FF7A45','#E9A23B','#2FA36B','#1F5C4A','#2B8FD6','#2B2B2B'];
+let previewSkin=null;
+const curSkin=()=>previewSkin||S.meta.skin||'candy';
+const skinObj=()=>SKINS.find(x=>x.id===curSkin())||SKINS[0];
+function lum(hex){const n=parseInt(hex.slice(1),16);const c=[n>>16,(n>>8)&255,n&255].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});return .2126*c[0]+.7152*c[1]+.0722*c[2];}
+const onColor=hex=>lum(hex)>.36?'#15121C':'#FFFFFF';
+function applyTheme(){
+  const r=document.documentElement, sk=curSkin();
+  const mode=sk==='pixel'?'dark':(sk==='scrapbook'||sk==='garden')?'light':(S.meta.theme==='auto'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):S.meta.theme);
+  r.setAttribute('data-skin',sk); r.setAttribute('data-theme',mode);
+  ['--accent','--on-accent','--accent-soft','--mat','--on-mat'].forEach(x=>r.style.removeProperty(x));
+  const a=S.meta.accent;
+  if(a){const on=onColor(a);r.style.setProperty('--accent',a);r.style.setProperty('--on-accent',on);r.style.setProperty('--accent-soft',`color-mix(in srgb, ${a} 18%, var(--surface))`);
+    if(sk!=='pixel'){r.style.setProperty('--mat',a);r.style.setProperty('--on-mat',on);}}
+  const m=document.querySelector('meta[name="theme-color"]'); if(m){const c=getComputedStyle(r).getPropertyValue('--mat').trim(); if(c) m.setAttribute('content',c);}
+}
+let actx=null;
+function tone(seq){ if(!S.meta.sound) return; try{
+  actx=actx||new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==='suspended') actx.resume();
+  const t0=actx.currentTime+.01, px=curSkin()==='pixel';
+  seq.forEach(([f,at,dur,vol])=>{const o=actx.createOscillator(),g=actx.createGain();o.type=px?'square':'sine';o.frequency.value=f;
+    const v=(vol||.07)*(px?.45:1);g.gain.setValueAtTime(0,t0+at);g.gain.linearRampToValueAtTime(v,t0+at+.012);g.gain.exponentialRampToValueAtTime(.0001,t0+at+dur);
+    o.connect(g);g.connect(actx.destination);o.start(t0+at);o.stop(t0+at+dur+.03);});
+}catch(e){} }
+const SND={tick:()=>tone([[880,0,.12],[1320,.07,.18]]),pop:()=>tone([[620,0,.09,.05],[930,.04,.07,.03]]),big:()=>tone([[660,0,.16],[880,.09,.16],[1100,.18,.16],[1320,.27,.34]])};
+const buzz=ms=>{if(S.meta.vibrate&&navigator.vibrate){try{navigator.vibrate(ms);}catch(e){}}};
+const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+function confetti(el,colors,n){ if(reduced()||!el) return; n=n||16; const r=el.getBoundingClientRect(); if(!r.width) return;
+  const cx=r.left+r.width/2, cy=r.top+r.height/2, fx=$('#fx');
+  for(let i=0;i<n;i++){const p=document.createElement('i');p.className='cf';p.style.background=colors[i%colors.length];p.style.left=cx+'px';p.style.top=cy+'px';fx.append(p);
+    const ang=Math.random()*Math.PI*2, d=40+Math.random()*80, dx=Math.cos(ang)*d, dy=Math.sin(ang)*d-30;
+    const an=p.animate([{transform:'translate(-50%,-50%) rotate(0deg)',opacity:1},{transform:`translate(calc(-50% + ${dx}px),calc(-50% + ${dy+70}px)) rotate(${Math.round(Math.random()*540)}deg)`,opacity:0}],{duration:700+Math.random()*450,easing:'cubic-bezier(.2,.7,.4,1)'});
+    an.onfinish=()=>p.remove();}
+}
+function pulse(el){if(!el||reduced())return;el.animate([{transform:'scale(1)'},{transform:'scale(1.18)'},{transform:'scale(1)'}],{duration:320,easing:'ease-out'});}
+const MILESTONES=[3,7,14,21,30,50,75,100,150,200,365];
+const FUN=['#D7FF4A','#FF7AC6','#4AE3FF','#FFD166'];
+function celebrate(el,t,k){
+  SND.tick(); buzz(15); confetti(el,[t.color,...FUN]);
+  const s=streakOf(t.id);
+  if(k===todayK()&&MILESTONES.includes(s.count)){setTimeout(()=>{SND.big();buzz([20,40,20]);confetti(el,[t.color,...FUN],36);toast(`${s.count}-day ${t.name} streak!`,3500);},260);return;}
+  if(t.goal){const kd=parseK(k);const n=monthCount(t.id,kd.getFullYear(),kd.getMonth());if(n===t.goal) setTimeout(()=>{SND.big();buzz([20,40,20]);confetti(el,[t.color,...FUN],36);toast(`Goal reached: ${t.goal} days of ${t.name} this month!`,3500);},260);}
+}
+
+/* ================= streaks & goals ================= */
+function weekKey(k){const d=parseK(k);d.setDate(d.getDate()-((d.getDay()-S.meta.weekStart+7)%7));return kOf(d);}
+const ticked=(id,k)=>{const e=S.days[k];return !!(e&&e.tags&&e.tags.includes(id));};
+function streakOf(id){
+  const tk=todayK(), today=ticked(id,tk); let k=today?tk:addDays(tk,-1), count=0, any=false; const used={};
+  for(let i=0;i<3000;i++){ if(ticked(id,k)){count++;any=true;} else { const w=weekKey(k); if(used[w]||(!any&&i>7)) break; used[w]=1; } k=addDays(k,-1); }
+  return {count,today};
+}
+function monthCount(id,y,m){const dim=new Date(y,m+1,0).getDate();let c=0;for(let d=1;d<=dim;d++) if(ticked(id,K(y,m,d))) c++;return c;}
+function totalCount(id){let c=0;for(const e of Object.values(S.days)) if(e.tags&&e.tags.includes(id)) c++;return c;}
+const need=L=>5*(L-1)*L/2;
+const lvlFor=n=>{let L=1;while(n>=need(L+1))L++;return L;};
+function toggleTag(k,id,el){
+  const en=entry(k,true); const on=en.tags.includes(id);
+  en.tags=on?en.tags.filter(x=>x!==id):[...en.tags,id]; saveDay(k);
+  const t=S.meta.trackers.find(x=>x.id===id);
+  if(!on&&t) celebrate(el,t,k);
+  renderView(); if(k===sel) renderChips();
+  if(!on) pulse(document.querySelector(`.tcard[data-id="${id}"] .big`));
+}
 function setView(v){
   if(v==='settings'){openSettings();return;}
   view=v;
@@ -550,7 +763,7 @@ function setView(v){
   $('#view-month').hidden=v!=='month'; $('#view-year').hidden=v!=='year'; $('#view-list').hidden=v!=='list';
   renderView();
 }
-function renderView(){ if(view==='month') renderMonth(); else if(view==='year') renderYear(); else renderList(); $('#banner').hidden=!S.meta.sample; }
+function renderView(){ if(view==='month') renderMonth(); else if(view==='year') renderYear(); else renderList(); $('#banner').hidden=!S.meta.sample; renderRevealBanner(); }
 
 /* ================= month ================= */
 function dowOrder(){const ws=+S.meta.weekStart;return [0,1,2,3,4,5,6].map(i=>(i+ws)%7);}
@@ -577,21 +790,104 @@ function renderMonth(){
   }
   const trail=(7-(lead+dim)%7)%7; for(let i=0;i<trail;i++) frag.append(h('div',{class:'day out'}));
   grid.replaceChildren(frag);
-  renderTrackers(dim);
+  renderTrackers();
 }
-function renderTrackers(dim){
-  const box=$('#trackers');
-  if(!S.meta.trackers.length){box.replaceChildren(h('div',{class:'muted small',text:'No trackers yet. Add the things you want to keep track of, like “Painting” or “Shop orders”.'}));return;}
+const flame=()=>h('span',{class:'flame',html:'<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 2c1 3.5 5.5 5.6 5.5 11.2a5.5 5.5 0 0 1-11 0c0-2.6 1.3-4.2 2.7-5.2.2 1.8 1 2.9 2.1 3.3C11 8.6 11.4 5 12 2z" style="fill:var(--today)"/></svg>'});
+function trackerWidget(t){
+  const mc=monthCount(t.id,vy,vm), kind=skinObj().tracker, dim=new Date(vy,vm+1,0).getDate();
+  if(kind==='xp'){const n=totalCount(t.id),L=lvlFor(n),lo=need(L),hi=need(L+1),f=(n-lo)/(hi-lo);
+    return h('div',{class:'w-xp'},h('div',{class:'xp-top'},h('b',{text:`LV ${L}`}),h('span',{text:`${hi-n} to LV ${L+1}`})),
+      h('div',{class:'xp-bar','aria-label':`Level ${L}`},[...Array(10)].map((_,i)=>h('i',{style:i<Math.round(f*10)?`background:${t.color}`:null}))),
+      h('div',{class:'xp-goal',text:t.goal?`${mc}/${t.goal} this month`:`${mc} this month`}));}
+  if(kind==='jar') return h('div',{class:'w-jar'},h('div',{class:'jar','aria-label':`${mc} days this month`},[...Array(Math.min(mc,40))].map((_,i)=>h('i',{style:`background:${t.color};opacity:${i%3===1?.7:1}`}))),h('span',{text:t.goal?`${mc}/${t.goal}`:`${mc} days`}));
+  if(kind==='stamps'){const n=Math.min(30,Math.max(t.goal||0,mc,6));
+    return h('div',{class:'w-stamps'},[...Array(n)].map((_,i)=>h('i',{style:i<mc?`border:1.5px solid ${t.color};color:${t.color};background:color-mix(in srgb, ${t.color} 14%, transparent)`:null},i<mc?'✓':'')),h('span',{class:'count',text:t.goal?`${mc}/${t.goal} this month`:`${mc} this month`}));}
+  const goal=t.goal||dim, f=Math.min(1,mc/goal), c=2*Math.PI*24;
+  return h('div',{class:'w-ring','aria-label':t.goal?`${mc} of ${t.goal} days this month`:`${mc} days this month`,html:`<svg viewBox="0 0 60 60" width="66" height="66"><circle cx="30" cy="30" r="24" fill="none" style="stroke:var(--line)" stroke-width="8"/><circle cx="30" cy="30" r="24" fill="none" stroke="${t.color}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${(c*f).toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 30 30)"/><text x="30" y="34" text-anchor="middle" font-size="${t.goal?11:13}" font-weight="600" style="fill:var(--fg);font-family:var(--mono)">${mc}${t.goal?'/'+t.goal:''}</text></svg>`});
+}
+function renderTrackers(){
+  const box=$('#tcards'); $('#sumTitle').textContent=`Trackers · ${MONTHS[vm]}`;
+  if(!S.meta.trackers.length){box.replaceChildren(h('div',{class:'empty',style:'grid-column:1/-1'},'Track the things you make. Tap “+ New tracker” and add one, like “Painting” or “Shop orders”.'));return;}
+  const tk=todayK(), ws=weekKey(tk);
   box.replaceChildren(...S.meta.trackers.map(t=>{
-    let cnt=0;const cells=[];
-    for(let d=1;d<=dim;d++){const e=S.days[K(vy,vm,d)];const on=e&&e.tags&&e.tags.includes(t.id);if(on)cnt++;cells.push(h('i',{style:on?`background:${t.color};border-color:${t.color}`:null}));}
-    const x=h('button',{class:'x','aria-label':`Remove tracker ${t.name}`,text:'✕'});
-    x.onclick=()=>armed(x,'Remove?',()=>{S.meta.trackers=S.meta.trackers.filter(z=>z.id!==t.id);
-      Object.entries(S.days).forEach(([k,e])=>{if(e.tags&&e.tags.includes(t.id)){e.tags=e.tags.filter(id=>id!==t.id);saveDay(k);}});
-      saveMeta();renderView();renderChips();toast(`Removed “${t.name}”`);});
-    return h('div',{class:'trow'},h('div',{class:'tname'},h('i',{class:'dot',style:`background:${t.color}`}),h('span',{text:t.name})),
-      h('div',{class:'strip','aria-hidden':'true'},cells),h('div',{class:'count',text:`${cnt} ${cnt===1?'day':'days'}`}),x);
+    const st=streakOf(t.id);
+    const week=[...Array(7)].map((_,i)=>{const k=addDays(ws,i);return h('i',{class:'wd'+(k===tk?' now':''),title:WD[parseK(k).getDay()],style:ticked(t.id,k)?`background:${t.color};border-color:${t.color}`:null});});
+    const done=h('button',{class:'done'+(st.today?' on':''),'aria-pressed':String(st.today)},st.today?'Done today ✓':'Done today');
+    done.onclick=()=>toggleTag(tk,t.id,done);
+    const hint=st.today?(st.count>1?'Streak safe for today':'Streak started'):(st.count?'Tick today to keep it going':'Start a streak today');
+    return h('div',{class:'tcard','data-id':t.id,style:`--chip:${t.color};--on-chip:${onColor(t.color)}`},
+      h('div',{class:'tc-head'},h('i',{class:'dot',style:`background:${t.color}`}),h('span',{class:'tc-name',text:t.name}),h('button',{class:'x',onclick:()=>openTracker(t.id),'aria-label':`Edit ${t.name}`},'Edit')),
+      h('div',{class:'tc-body'},
+        h('div',{class:'tc-streak'},h('div',{class:'big'},flame(),h('span',{class:'sn',text:st.count})),h('div',{class:'sl',text:'day streak'}),h('div',{class:'week','aria-hidden':'true'},week),h('div',{class:'hint',text:hint})),
+        trackerWidget(t)),
+      done);
   }));
+}
+
+/* ================= tracker editor ================= */
+let trEditing=null, trColor=PALETTE[0];
+function openTracker(id){
+  trEditing=id?S.meta.trackers.find(t=>t.id===id):null;
+  $('#trTitle').textContent=trEditing?'Edit tracker':'New tracker';
+  $('#trName').value=trEditing?trEditing.name:''; $('#trGoal').value=trEditing&&trEditing.goal?trEditing.goal:'';
+  trColor=trEditing?trEditing.color:PALETTE[S.meta.trackers.length%PALETTE.length]; buildTrColors();
+  const d=$('#trDelete'); d.hidden=!trEditing; d.classList.remove('armed'); d.textContent='Delete'; d._orig=null;
+  openModal('#trModal'); setTimeout(()=>$('#trName').focus(),50);
+}
+function buildTrColors(){$('#trColors').replaceChildren(...PALETTE.map(c=>h('button',{type:'button',class:'sw'+(c===trColor?' on':''),style:`background:${c}`,'aria-label':'Colour','aria-pressed':String(c===trColor),onclick:()=>{trColor=c;buildTrColors();}})));}
+
+/* ================= monthly reveal ================= */
+let rv={y:0,m:0};
+function bestRun(id,y,m){const dim=new Date(y,m+1,0).getDate();let b=0,c=0;for(let d=1;d<=dim;d++){if(ticked(id,K(y,m,d))){c++;b=Math.max(b,c);}else c=0;}return b;}
+function monthStats(y,m){
+  const dim=new Date(y,m+1,0).getDate(); const pics=[]; let made=0,doodles=0,photos=0,plans=0;
+  for(let d=1;d<=dim;d++){const k=K(y,m,d),e=S.days[k]; plans+=eventsOn(k).length; if(!e) continue;
+    if(e.note||e.doodle||(e.photos&&e.photos.length)||(e.tags&&e.tags.length)) made++;
+    if(e.doodle) doodles++; photos+=(e.photos||[]).length; if(e.doodle||(e.photos&&e.photos[0])) pics.push([d,e.doodle||e.photos[0]]);}
+  return {made,doodles,photos,plans,pics,tr:S.meta.trackers.map(t=>({t,n:monthCount(t.id,y,m),best:bestRun(t.id,y,m)}))};
+}
+function openReveal(y,m){
+  rv={y,m}; const st=monthStats(y,m);
+  S.meta.revealed=S.meta.revealed||{}; S.meta.revealed[`${y}-${pad(m+1)}`]=1; saveMeta();
+  $('#rvTitle').textContent=`Your ${MONTHS[m]}${y!==now.getFullYear()?' '+y:''}`;
+  const tiles=[[st.made,st.made===1?'day of making':'days of making'],[st.doodles,st.doodles===1?'doodle':'doodles'],[st.photos,st.photos===1?'photo':'photos'],[st.plans,st.plans===1?'plan':'plans']];
+  $('#rvBody').replaceChildren(
+    h('div',{class:'rv-stats'},tiles.filter((t,i)=>i===0||t[0]>0).map(([n,l])=>h('div',{class:'rv-stat'},h('b',{text:n}),h('span',{text:l})))),
+    st.pics.length?h('div',{class:'rv-grid'},st.pics.map(([d,src])=>h('div',{class:'rv-pic'},h('img',{src,alt:`Doodle from ${d} ${MONTHS[m]}`}),h('span',{text:d})))):h('div',{class:'empty',text:'No doodles this month yet. Every day you draw shows up here.'}),
+    st.tr.length?h('div',{class:'rv-tr'},st.tr.map(({t,n,best})=>h('div',{class:'rv-row'},h('i',{class:'dot',style:`background:${t.color}`}),h('span',{class:'nm',text:t.name}),
+      h('span',{class:'count',text:`${n}${t.goal?' of '+t.goal:''} day${(t.goal||n)===1?'':'s'}${best>1?' · best run '+best:''}`}),t.goal&&n>=t.goal?h('span',{class:'badge',text:'Goal reached'}):null))):null);
+  openModal('#revealModal'); renderRevealBanner();
+  if(st.made){SND.big(); setTimeout(()=>confetti($('#rvTitle'),FUN,30),120);}
+}
+function prevMonth(){const n=new Date();const p=new Date(n.getFullYear(),n.getMonth()-1,1);return {y:p.getFullYear(),m:p.getMonth()};}
+function renderRevealBanner(){
+  const b=$('#revealBanner'); if(!b) return; const p=prevMonth(); const key=`${p.y}-${pad(p.m+1)}`;
+  const st=(S.meta.revealed||{})[key]?null:monthStats(p.y,p.m);
+  const show=!!(st&&st.made>=3); b.hidden=!show||view!=='month';
+  if(show) $('#revealText').textContent=`Your ${MONTHS[p.m]} is ready: ${st.made} days of making. Take a look back.`;
+}
+function rr(x,X,Y,w,hh,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+hh,r);x.arcTo(X+w,Y+hh,X,Y+hh,r);x.arcTo(X,Y+hh,X,Y,r);x.arcTo(X,Y,X+w,Y,r);x.closePath();}
+async function revealImage(){
+  const {y,m}=rv, st=monthStats(y,m), W=1080, H=1350, c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
+  const cs=getComputedStyle(document.documentElement), v=n=>cs.getPropertyValue(n).trim();
+  const disp=v('--display'), body=v('--body'), mono=v('--mono');
+  try{await Promise.all([document.fonts.load(`700 80px ${disp}`),document.fonts.load(`600 30px ${body}`)]);}catch(e){}
+  x.fillStyle=v('--bg'); x.fillRect(0,0,W,H); x.fillStyle=v('--mat'); x.fillRect(0,0,W,220);
+  x.fillStyle=v('--on-mat'); x.font=`700 88px ${disp}`; x.fillText(`My ${MONTHS[m]}`,64,128);
+  x.font=`500 32px ${body}`; x.globalAlpha=.85; x.fillText(`${y} · ${st.made} days of making · ${st.doodles} doodles`,64,184); x.globalAlpha=1;
+  const pics=st.pics.slice(0,12), cols=4, gap=20, cell=(W-128-gap*(cols-1))/cols, top=260;
+  const imgs=await Promise.all(pics.map(([d,src])=>new Promise(r=>{const i=new Image();i.onload=()=>r([d,i]);i.onerror=()=>r([d,null]);i.src=src;})));
+  imgs.forEach(([d,img],i)=>{const cx=64+(i%cols)*(cell+gap), cy=top+Math.floor(i/cols)*(cell+gap);
+    x.fillStyle='#FFFDF8'; rr(x,cx,cy,cell,cell,18); x.fill();
+    if(img){x.save(); rr(x,cx,cy,cell,cell,18); x.clip(); const sc=Math.max(cell/img.width,cell/img.height); x.drawImage(img,cx+(cell-img.width*sc)/2,cy+(cell-img.height*sc)/2,img.width*sc,img.height*sc); x.restore();}
+    x.fillStyle=v('--accent'); rr(x,cx+10,cy+10,58,40,10); x.fill(); x.fillStyle=v('--on-accent'); x.font=`600 24px ${mono}`; x.textAlign='center'; x.fillText(String(d),cx+39,cy+38); x.textAlign='left';});
+  let ty=pics.length?top+Math.ceil(pics.length/cols)*(cell+gap)+40:top+60;
+  if(!pics.length){x.fillStyle=v('--muted'); x.font=`500 32px ${body}`; x.fillText('A month of making.',64,ty); ty+=70;}
+  st.tr.slice(0,4).forEach(({t,n})=>{x.fillStyle=t.color; x.beginPath(); x.arc(80,ty-11,13,0,Math.PI*2); x.fill();
+    x.fillStyle=v('--fg'); x.font=`600 36px ${body}`; x.fillText(t.name,110,ty);
+    x.fillStyle=v('--muted'); x.font=`500 32px ${mono}`; x.textAlign='right'; x.fillText(`${n}${t.goal?'/'+t.goal:''} days`,W-64,ty); x.textAlign='left'; ty+=62;});
+  x.fillStyle=v('--muted'); x.font=`500 26px ${body}`; x.fillText('made with Doodle Days',64,H-48);
+  return new Promise(r=>c.toBlob(r,'image/png'));
 }
 
 /* ================= year ================= */
@@ -629,12 +925,21 @@ function itemBtn(k,title,sub,img){const f=fmtShort(k);
 function renderList(){
   const q=$('#q').value.trim().toLowerCase(); const out=$('#listOut'); const secs=[];
   if(q){
-    const res=[];
-    Object.entries(S.days).forEach(([k,e])=>{if(e.note&&e.note.toLowerCase().includes(q)) res.push([k,'Note',e.note,e.doodle]);});
-    Object.values(S.events).forEach(ev=>{if(ev.title.toLowerCase().includes(q)) res.push([ev.date,ev.title,[ev.time,REPEAT_TXT[ev.repeat]].filter(Boolean).join(' · '),null]);});
-    res.sort((a,b)=>b[0].localeCompare(a[0]));
-    secs.push(h('div',{class:'list-sec'},h('p',{class:'label',text:`${res.length} result${res.length===1?'':'s'}`}),
-      res.length?res.map(r=>itemBtn(...r)):h('div',{class:'empty',text:'Nothing found. Try another word.'})));
+    const res=[], T=todayK();
+    Object.entries(S.days).forEach(([k,e])=>{if(e.note&&e.note.toLowerCase().includes(q)) res.push([k,e.note.split('\n')[0].slice(0,60),e.note.length>60?e.note:'Note',e.doodle]);});
+    Object.values(S.events).forEach(ev=>{if(!ev.title.toLowerCase().includes(q)) return;
+      const sub=[ev.time||'All day',REPEAT_TXT[ev.repeat]].filter(Boolean).join(' · ');
+      if(!ev.repeat||ev.repeat==='none'){res.push([ev.date,ev.title,sub,null]);return;}
+      // repeating plan: list each session from 60 days ago to 90 days ahead
+      let k=ev.date>addDays(T,-60)?ev.date:addDays(T,-60); const endK=addDays(T,90); let n=0;
+      while(k<=endK&&n<40){if(occurs(ev,k)){res.push([k,ev.title,sub,null]);n++;} k=addDays(k,1);}
+    });
+    const upcoming=res.filter(r=>r[0]>=T).sort((a,b)=>a[0].localeCompare(b[0]));
+    const earlier=res.filter(r=>r[0]<T).sort((a,b)=>b[0].localeCompare(a[0]));
+    secs.push(h('p',{class:'label',text:`${res.length} result${res.length===1?'':'s'}`}));
+    if(!res.length) secs.push(h('div',{class:'empty',text:'Nothing found. Try another word.'}));
+    if(upcoming.length) secs.push(h('div',{class:'list-sec'},h('p',{class:'label',text:'Upcoming'}),upcoming.map(r=>itemBtn(...r))));
+    if(earlier.length) secs.push(h('div',{class:'list-sec'},h('p',{class:'label',text:'Earlier'}),earlier.map(r=>itemBtn(...r))));
   } else {
     const up=[];let k=todayK();
     for(let i=0;i<60&&up.length<40;i++,k=addDays(k,1)) eventsOn(k).forEach(ev=>up.push([k,ev.title,[ev.time||'All day',REPEAT_TXT[ev.repeat],remindTxt(ev.remind)?'🔔 '+remindTxt(ev.remind):''].filter(Boolean).join(' · '),null]));
@@ -653,7 +958,7 @@ ctx.lineCap='round'; ctx.lineJoin='round';
 let tool='pen', ink=INKS[0], size=SIZES[1], sticker=null, undo=[], penSeen=false;
 
 function openDay(k,show=true){
-  sel=k; undo=[];
+  sel=k; undo=[]; strokes=0; nextCheer=4+Math.floor(Math.random()*4); blankAtOpen=!(S.days[k]&&S.days[k].doodle); lastInk=ink;
   const d=parseK(k);
   $('#edDate').textContent=`${WD[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]}`;
   const diff=Math.round((d-parseK(todayK()))/864e5);
@@ -696,6 +1001,17 @@ let doodleTimer;
 function storeDoodle(){clearTimeout(doodleTimer);const k=sel;doodleTimer=setTimeout(()=>{if(sel!==k)return;const e=entry(k,true);e.doodle=isBlank()?null:cv.toDataURL('image/png');saveDay(k);renderView();},120);}
 
 let drawing=false,last=null,pts=[],snap=null,pid=null;
+const CHEERS=['lovely line','so pretty','tiny masterpiece','love that','keep going','ooh, yes','that\'s the one','art!','nice!'];
+let strokes=0,nextCheer=5,blankAtOpen=true,lastInk=null;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function cheer(text){if(!S.meta.cheers)return;const c=$('#cheer');c.textContent=text;c.hidden=false;c.classList.remove('show');void c.offsetWidth;c.classList.add('show');clearTimeout(c._h);c._h=setTimeout(()=>{c.hidden=true;},1850);}
+function afterStroke(){
+  strokes++; if(tool==='eraser') return;
+  if(strokes===1&&blankAtOpen){cheer('a fresh page');lastInk=ink;return;}
+  if(lastInk&&ink!==lastInk){lastInk=ink;if(Math.random()<.5){cheer('ooh, nice colour');nextCheer=strokes+5;return;}}
+  lastInk=ink;
+  if(strokes>=nextCheer){cheer(pick(CHEERS));nextCheer=strokes+5+Math.floor(Math.random()*5);}
+}
 function pos(ev){const r=cv.getBoundingClientRect();return {x:(ev.clientX-r.left)*cv.width/r.width,y:(ev.clientY-r.top)*cv.height/r.height};}
 const wOf=ev=>{const base=tool==='eraser'?size*3:tool==='marker'?size*2.6:size;return base*(ev.pointerType==='pen'&&ev.pressure?(.4+ev.pressure*1.2):1);};
 cv.addEventListener('pointerdown',ev=>{
@@ -704,7 +1020,7 @@ cv.addEventListener('pointerdown',ev=>{
   if(drawing) return;
   ev.preventDefault(); try{cv.setPointerCapture(ev.pointerId);}catch(e){}
   pushUndo(); const p=pos(ev);
-  if(tool==='sticker'){const img=stickerImg[sticker];const s=[70,120,190][SIZES.indexOf(size)];if(img&&img.complete){ctx.globalCompositeOperation='source-over';ctx.drawImage(img,p.x-s/2,p.y-s/2,s,s);storeDoodle();}return;}
+  if(tool==='sticker'){const img=stickerImg[sticker];const s=[70,120,190][SIZES.indexOf(size)];if(img&&img.complete){ctx.globalCompositeOperation='source-over';ctx.drawImage(img,p.x-s/2,p.y-s/2,s,s);storeDoodle();SND.pop();buzz(8);if(Math.random()<.3)cheer(pick(['cute!','perfect spot','aww']));}return;}
   drawing=true; pid=ev.pointerId; last=p; pts=[p];
   if(tool==='marker'){snap=undo[undo.length-1];}
   ctx.globalCompositeOperation=tool==='eraser'?'destination-out':'source-over';
@@ -723,7 +1039,7 @@ cv.addEventListener('pointermove',ev=>{
     last=p;
   }
 });
-const endStroke=ev=>{if(!drawing||(ev&&ev.pointerId!==pid))return;drawing=false;snap=null;ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';storeDoodle();};
+const endStroke=ev=>{if(!drawing||(ev&&ev.pointerId!==pid))return;drawing=false;snap=null;ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';storeDoodle();afterStroke();};
 cv.addEventListener('pointerup',endStroke);cv.addEventListener('pointercancel',endStroke);
 
 function renderEvs(){
@@ -738,7 +1054,7 @@ function renderChips(){
   if(!S.meta.trackers.length){box.replaceChildren(h('span',{class:'muted small',text:'Add trackers under the month calendar, then tick them off here.'}));return;}
   box.replaceChildren(...S.meta.trackers.map(t=>{const on=!!(e&&e.tags&&e.tags.includes(t.id));
     const b=h('button',{class:'chip'+(on?' on':''),'aria-pressed':String(on),style:`--chip:${t.color}`},h('i',{class:'dot',style:`background:${t.color};width:10px;height:10px`}),h('span',{text:t.name}));
-    b.onclick=()=>{const en=entry(sel,true);en.tags=on?en.tags.filter(id=>id!==t.id):[...en.tags,t.id];saveDay(sel);renderChips();renderView();};
+    b.onclick=()=>toggleTag(sel,t.id,b);
     return b;}));
 }
 function renderPhotos(){
@@ -813,7 +1129,8 @@ function downloadIcs(ev){
   saveFile(L.join('\r\n'),`${ev.title.replace(/[^\w\- ]+/g,'').trim()||'plan'}.ics`,'text/calendar');
   toast('Calendar file created. Open it to add the plan to your phone calendar.',3500);
 }
-function saveFile(text,name,type){const blob=new Blob([text],{type});const url=URL.createObjectURL(blob);
+function saveFile(text,name,type){saveBlob(new Blob([text],{type}),name);}
+function saveBlob(blob,name){const url=URL.createObjectURL(blob);
   const a=h('a',{href:url,download:name});document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);}
 
 /* ================= reminders ================= */
@@ -843,6 +1160,7 @@ addEventListener('beforeinstallprompt',e=>{e.preventDefault();installEvt=e;$('#i
 $('#installBtn').onclick=async()=>{if(!installEvt)return;installEvt.prompt();try{await installEvt.userChoice;}catch(e){}installEvt=null;$('#installBtn').hidden=true;};
 function openSettings(){
   $('#setTheme').value=S.meta.theme; $('#setWeek').value=String(S.meta.weekStart);
+  $('#setSound').checked=!!S.meta.sound; $('#setVibe').checked=!!S.meta.vibrate; $('#setCheers').checked=!!S.meta.cheers; buildSkins();
   const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
   $('#installSec').hidden=!!standalone;
   updNotif(); storageInfo(); openModal('#setModal');
@@ -856,7 +1174,22 @@ async function storageInfo(){const el=$('#storageInfo');el.textContent='';
     if(navigator.storage.persist) navigator.storage.persist();}catch(e){}}
 $('#setClose').onclick=()=>closeModal('#setModal');
 $('#setModal').addEventListener('click',e=>{if(e.target.id==='setModal')closeModal('#setModal');});
-$('#setTheme').onchange=e=>{S.meta.theme=e.target.value;saveMeta();applyTheme();};
+$('#setTheme').onchange=e=>{S.meta.theme=e.target.value;saveMeta();applyTheme();buildSkins();};
+$('#setSound').onchange=e=>{S.meta.sound=e.target.checked;saveMeta();if(S.meta.sound)SND.tick();};
+$('#setVibe').onchange=e=>{S.meta.vibrate=e.target.checked;saveMeta();buzz(15);};
+$('#setCheers').onchange=e=>{S.meta.cheers=e.target.checked;saveMeta();};
+function buildSkins(){
+  const cur=curSkin();
+  $('#skins').replaceChildren(...SKINS.map(sk=>h('button',{class:'skin'+(sk.id===cur?' on':''),'aria-pressed':String(sk.id===cur),onclick:()=>{
+      if(sk.paid){previewSkin=sk.id;applyTheme();buildSkins();renderView();toast(`Previewing ${sk.name}. It comes with Supporter, so it resets when you reopen the app.`,4000);return;}
+      previewSkin=null;S.meta.skin=sk.id;saveMeta();applyTheme();buildSkins();renderView();}},
+    h('span',{class:'skin-sw'},sk.sw.map(c=>h('i',{style:`background:${c}`}))),h('span',{class:'skn'},h('span',{text:sk.name}),sk.paid?h('small',{class:'lock',text:'Supporter'}):null))));
+  $('#accents').replaceChildren(h('button',{class:'chipbtn'+(!S.meta.accent?' on':''),onclick:()=>{S.meta.accent=null;saveMeta();applyTheme();buildSkins();}},'Theme default'),
+    ...ACCENTS.map(c=>h('button',{class:'sw'+(S.meta.accent===c?' on':''),style:`background:${c}`,'aria-label':'Main colour','aria-pressed':String(S.meta.accent===c),onclick:()=>{S.meta.accent=c;saveMeta();applyTheme();buildSkins();}})));
+  const so=skinObj(); $('#setTheme').disabled=!so.modes;
+  $('#modeNote').textContent=so.modes?'':`${so.name} has its own fixed look, so light or dark doesn't apply.`;
+}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(S.meta.theme==='auto')applyTheme();});
 $('#setWeek').onchange=e=>{S.meta.weekStart=+e.target.value;saveMeta();renderView();};
 $('#exportBtn').onclick=()=>{const data={app:'doodle-days',version:1,exported:new Date().toISOString(),meta:S.meta,days:S.days,events:S.events};
   saveFile(JSON.stringify(data),`doodle-days-backup-${todayK()}.json`,'application/json');toast('Backup file saved. Keep it somewhere safe, like Google Drive or iCloud.',3500);};
@@ -868,7 +1201,7 @@ $('#importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;
   }catch(err){toast("That file isn't a Doodle Days backup.");}
   e.target.value='';};
 $('#loadSample').onclick=()=>{loadSample();closeModal('#setModal');toast('Example entries added.');};
-$('#wipeBtn').onclick=function(){armed(this,'Tap again to delete everything',async()=>{await DB.clear();S.meta=Object.assign(defaultMeta(),{theme:S.meta.theme,weekStart:S.meta.weekStart,started:true});S.days={};S.events={};saveMeta();closeModal('#setModal');openDay(todayK(),false);toast('Everything deleted.');});};
+$('#wipeBtn').onclick=function(){armed(this,'Tap again to delete everything',async()=>{await DB.clear();S.meta=Object.assign(defaultMeta(),{theme:S.meta.theme,weekStart:S.meta.weekStart,skin:S.meta.skin,accent:S.meta.accent,sound:S.meta.sound,vibrate:S.meta.vibrate,cheers:S.meta.cheers,started:true});S.days={};S.events={};saveMeta();closeModal('#setModal');openDay(todayK(),false);toast('Everything deleted.');});};
 
 /* ================= examples ================= */
 function sketch(kind){
@@ -893,7 +1226,7 @@ function sketch(kind){
 }
 function loadSample(){
   const base=S.meta.trackers.length; const tr=[['Watercolour',0],['Knitting',1],['Shop orders',2],['Sketch a day',3]].map(([name])=>{
-    const id='t'+(S.meta.nextId++);const t={id,name,color:PALETTE[(S.meta.trackers.length)%PALETTE.length]};S.meta.trackers.push(t);return id;});
+    const id='t'+(S.meta.nextId++);const t={id,name,color:PALETTE[(S.meta.trackers.length)%PALETTE.length],goal:{'Watercolour':12,'Knitting':8,'Shop orders':10,'Sketch a day':25}[name]||null};S.meta.trackers.push(t);return id;});
   const [w,kn,so,sk]=tr; const y=now.getFullYear(),m=now.getMonth(); const days=[]; const evs=[];
   const put=(d,o)=>{const k=K(y,m,d);if(S.days[k])return;S.days[k]=Object.assign({note:'',tags:[],doodle:null,photos:[]},o);days.push(k);DB.put('d:'+k,S.days[k]);};
   put(1,{note:'Tried wet-on-wet skies. Too much water again!',tags:[w,sk],doodle:sketch('sun')});
@@ -905,6 +1238,10 @@ function loadSample(){
   put(17,{note:'Glaze test for mugs',tags:[sk],doodle:sketch('mug')});
   put(20,{tags:[w,kn]});
   put(24,{note:'Restock stickers',tags:[so]});
+  const pre=new Set(Object.keys(S.days).filter(k=>!days.includes(k)));
+  const tagDay=(k,ids)=>{if(pre.has(k))return;if(!S.days[k]){S.days[k]={note:'',tags:[],doodle:null,photos:[]};days.push(k);}const e=S.days[k];ids.forEach(id=>{if(!e.tags.includes(id))e.tags.push(id);});DB.put('d:'+k,e);};
+  const T=todayK();
+  for(let i=1;i<=16;i++){const k=addDays(T,-i);const ids=[];if(i!==6)ids.push(sk);if(i<=9&&i%4!==0)ids.push(w);if(i%3===0)ids.push(kn);if(i%5===2)ids.push(so);if(ids.length)tagDay(k,ids);}
   const addEv=o=>{const ev=Object.assign({id:uid(),time:'',repeat:'none',remind:null},o);saveEvent(ev);evs.push(ev.id);};
   addEv({title:'Craft fair at the square',date:K(y,m,14),time:'10:00',remind:1440});
   const firstTue=[...Array(7)].map((_,i)=>K(y,m,i+1)).find(k=>parseK(k).getDay()===2);
@@ -932,11 +1269,26 @@ $('#prevY').onclick=()=>{yy--;renderYear();};
 $('#nextY').onclick=()=>{yy++;renderYear();};
 $('#yearFilter').onchange=e=>{yearFilter=e.target.value;renderYear();};
 $('#q').addEventListener('input',()=>{clearTimeout(window._qt);window._qt=setTimeout(renderList,150);});
-$('#addTracker').addEventListener('submit',e=>{e.preventDefault();const name=$('#newTracker').value.trim();if(!name)return;
-  const t={id:'t'+(S.meta.nextId++),name,color:PALETTE[S.meta.trackers.length%PALETTE.length]};S.meta.trackers.push(t);
-  $('#newTracker').value='';saveMeta();renderView();renderChips();toast(`Added “${name}”`);});
+$('#newTracker').onclick=()=>openTracker(null);
+$('#trCancel').onclick=()=>closeModal('#trModal');
+$('#trModal').addEventListener('click',e=>{if(e.target.id==='trModal')closeModal('#trModal');});
+$('#trForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#trName').value.trim();if(!name)return;
+  const g=parseInt($('#trGoal').value,10), goal=g>0?Math.min(31,g):null, was=!!trEditing;
+  if(trEditing) Object.assign(trEditing,{name,color:trColor,goal}); else S.meta.trackers.push({id:'t'+(S.meta.nextId++),name,color:trColor,goal});
+  saveMeta();closeModal('#trModal');renderView();renderChips();toast(was?'Tracker updated':`Added “${name}”`);});
+$('#trDelete').onclick=function(){armed(this,'Delete tracker?',()=>{const t=trEditing;S.meta.trackers=S.meta.trackers.filter(z=>z.id!==t.id);
+  Object.entries(S.days).forEach(([k,e])=>{if(e.tags&&e.tags.includes(t.id)){e.tags=e.tags.filter(id=>id!==t.id);saveDay(k);}});
+  saveMeta();closeModal('#trModal');renderView();renderChips();toast(`Deleted “${t.name}”`);});};
+$('#revealBtn').onclick=()=>openReveal(vy,vm);
+$('#revealOpen').onclick=()=>{const p=prevMonth();openReveal(p.y,p.m);};
+$('#rvClose').onclick=()=>closeModal('#revealModal');
+$('#revealModal').addEventListener('click',e=>{if(e.target.id==='revealModal')closeModal('#revealModal');});
+$('#rvPrev').onclick=()=>{let {y,m}=rv;m--;if(m<0){m=11;y--;}openReveal(y,m);};
+$('#rvSave').onclick=async()=>{const blob=await revealImage();if(!blob)return;const name=`my-${MONTHS[rv.m].toLowerCase()}-${rv.y}.png`;
+  try{const file=new File([blob],name,{type:'image/png'});if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:`My ${MONTHS[rv.m]}`});return;}}catch(e){if(e&&e.name==='AbortError')return;}
+  saveBlob(blob,name);toast('Image saved.');};
 addEventListener('keydown',e=>{if(e.key!=='Escape')return;
-  if(!$('#viewer').hidden) $('#viewer').hidden=true; else if(!$('#evModal').hidden) closeModal('#evModal'); else if(!$('#setModal').hidden) closeModal('#setModal'); else hidePanel(false);});
+  if(!$('#viewer').hidden) $('#viewer').hidden=true; else if(!$('#trModal').hidden) closeModal('#trModal'); else if(!$('#revealModal').hidden) closeModal('#revealModal'); else if(!$('#evModal').hidden) closeModal('#evModal'); else if(!$('#setModal').hidden) closeModal('#setModal'); else hidePanel(false);});
 matchMedia('(max-width:999.98px)').addEventListener('change',e=>{if(!e.matches){panelOpen=false;$('#panel').classList.remove('open');$('#scrim').hidden=true;document.body.style.overflow='';}});
 
 /* ================= start ================= */
