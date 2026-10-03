@@ -100,15 +100,17 @@
 .sp-skip{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));font-size:.78rem;opacity:.6}
 .sp-dot{position:absolute;width:12px;height:12px;border-radius:50%}
 @media (prefers-reduced-motion:no-preference){
-  .sp-card{transform-origin:60px 70px;animation:spPop .6s cubic-bezier(.3,1.5,.5,1) both}
-  .sp-heart{stroke-dasharray:240;stroke-dashoffset:240;animation:spDraw .7s .45s ease-out forwards}
-  .sp-fill{opacity:0;animation:spFade .3s 1s ease forwards}
-  .sp-title{animation:spUp .45s .25s ease both}
-  .sp-tag{animation:spUp .45s .4s ease both}
-  .sp-dot{opacity:0;animation:spBurst .7s 1s ease-out forwards}
-  .sp-scrib{stroke-dasharray:420;stroke-dashoffset:420;animation:spDraw .8s .55s ease-in-out forwards}
+  .sp-inner{animation:spRise .55s .2s cubic-bezier(.3,1.2,.5,1) both}
+  .sp-card{transform-origin:60px 70px;animation:spTilt .5s .2s cubic-bezier(.3,1.6,.5,1) both}
+  .sp-heartg{transform-box:fill-box;transform-origin:center;animation:spBeat .5s .55s ease-in-out both}
+  .sp-title{animation:spUp .45s .45s ease both}
+  .sp-tag{animation:spUp .45s .6s ease both}
+  .sp-dot{opacity:0;animation:spBurst .7s .6s ease-out forwards}
+  .sp-scrib{stroke-dasharray:420;stroke-dashoffset:420;animation:spDraw .8s .6s ease-in-out forwards}
 }
-@keyframes spPop{0%{transform:scale(.4) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(-4deg);opacity:1}}
+@keyframes spRise{from{transform:translateY(var(--off,0px))}to{transform:none}}
+@keyframes spTilt{from{transform:none}to{transform:rotate(-4deg)}}
+@keyframes spBeat{0%,100%{transform:scale(1)}35%{transform:scale(1.18)}60%{transform:scale(.96)}}
 @keyframes spDraw{to{stroke-dashoffset:0}}
 @keyframes spFade{to{opacity:1}}
 @keyframes spUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
@@ -389,8 +391,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
           <rect x="14" y="22" width="92" height="96" rx="12" fill="#FFFDF8" stroke="#2B2B2B" stroke-width="5"/>
           <path d="M14 34a12 12 0 0 1 12-12h68a12 12 0 0 1 12 12v12H14z" fill="#E9A23B" stroke="#2B2B2B" stroke-width="5" stroke-linejoin="round"/>
           <rect x="34" y="12" width="8" height="22" rx="4" fill="#2B2B2B"/><rect x="78" y="12" width="8" height="22" rx="4" fill="#2B2B2B"/>
-          <path class="sp-fill" d="M60 104C38 90 30 78 34 68c4-10 18-10 26 1 8-11 22-11 26-1 4 10-4 22-26 36z" fill="#F08AA8"/>
-          <path class="sp-heart" d="M60 104C38 90 30 78 34 68c4-10 18-10 26 1 8-11 22-11 26-1 4 10-4 22-26 36z" fill="none" stroke="#2B2B2B" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+          <g class="sp-heartg"><path d="M60 104C38 90 30 78 34 68c4-10 18-10 26 1 8-11 22-11 26-1 4 10-4 22-26 36z" fill="#F08AA8" stroke="#2B2B2B" stroke-width="5" stroke-linejoin="round"/></g>
         </g>
       </svg>
       <i class="sp-dot" style="left:6px;top:30px;background:#D7FF4A;--dx:-26px;--dy:-22px"></i>
@@ -408,7 +409,8 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
 <script>
 (function(){var t=['a fresh page awaits','hello, maker','one little doodle a day','your sketchbook calendar'];
  var el=document.getElementById('spTag'); if(el) el.textContent=t[Math.floor(Math.random()*t.length)];
- var sp=document.getElementById('splash'); sp.addEventListener('click',function(){sp.classList.add('out');setTimeout(function(){sp.remove();},400);});
+ var sp=document.getElementById('splash');
+ try{var lg=sp.querySelector('.sp-logo').getBoundingClientRect(),inn=sp.querySelector('.sp-inner');inn.style.setProperty('--off',Math.round(innerHeight/2-(lg.top+lg.height/2))+'px');}catch(e){} sp.addEventListener('click',function(){sp.classList.add('out');setTimeout(function(){sp.remove();},400);});
  setTimeout(function(){if(sp.isConnected){sp.classList.add('out');setTimeout(function(){sp.remove();},400);}},5000);})();
 </script>
 <header class="mat">
@@ -604,7 +606,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <button class="btn danger" id="wipeBtn">Delete everything</button>
       </div>
     </div>
-    <div class="small muted">Doodle Days v2.3 · Works offline · No account, no ads</div>
+    <div class="small muted">Doodle Days v2.4 · Works offline · No account, no ads</div>
   </div>
 </div>
 
