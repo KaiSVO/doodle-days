@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Doodle Days</title>
 <meta name="description" content="A free calendar you can draw in. Doodle, plan and track your making, one day at a time.">
-<meta name="theme-color" content="#1F5C4A">
+<meta name="theme-color" content="#6C3CF0">
+<script>
+(function(){var r=document.documentElement,l=null;try{l=JSON.parse(localStorage.getItem('dd-look')||'null');}catch(e){}
+ if(l&&l.skin){r.setAttribute('data-skin',l.skin);r.setAttribute('data-theme',l.mode||'light');if(l.mat){r.style.setProperty('--mat',l.mat);r.style.setProperty('--on-mat',l.on);}}
+ else{r.setAttribute('data-skin','candy');r.setAttribute('data-theme',matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}})();
+</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -79,6 +84,35 @@
 :root[data-skin="scrapbook"] .day:nth-child(5n+2){transform:rotate(.6deg)}
 :root[data-skin="scrapbook"] .tcard:nth-child(odd){transform:rotate(-.5deg)}
 :root[data-skin="garden"] .brand,:root[data-skin="garden"] .month,:root[data-skin="garden"] .ed-date,:root[data-skin="garden"] .sn,:root[data-skin="garden"] .dialog h2{font-style:italic;font-weight:500}
+
+/* ---- launch screen ---- */
+.splash{position:fixed;inset:0;z-index:200;background:var(--mat);color:var(--on-mat);display:grid;place-items:center;
+  background-image:linear-gradient(var(--mat-line) 1px,transparent 1px),linear-gradient(90deg,var(--mat-line) 1px,transparent 1px);background-size:24px 24px;
+  transition:opacity .35s ease,transform .35s ease;padding:24px}
+.splash.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.sp-inner{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.sp-logo{width:132px;height:132px;position:relative}
+.sp-logo svg{width:100%;height:100%;display:block;overflow:visible}
+.sp-title{font-family:var(--display);font-size:2.6rem;line-height:1;margin-top:6px}
+.sp-tag{font-size:1rem;opacity:.85;min-height:1.4em}
+.sp-greet{font-size:.95rem;font-weight:700;background:rgba(255,255,255,.16);border-radius:999px;padding:6px 14px;min-height:2em;opacity:0;transition:opacity .3s}
+.sp-greet.show{opacity:1}
+.sp-skip{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));font-size:.78rem;opacity:.6}
+.sp-dot{position:absolute;width:12px;height:12px;border-radius:50%}
+@media (prefers-reduced-motion:no-preference){
+  .sp-card{transform-origin:60px 70px;animation:spPop .6s cubic-bezier(.3,1.5,.5,1) both}
+  .sp-heart{stroke-dasharray:240;stroke-dashoffset:240;animation:spDraw .7s .45s ease-out forwards}
+  .sp-fill{opacity:0;animation:spFade .3s 1s ease forwards}
+  .sp-title{animation:spUp .45s .25s ease both}
+  .sp-tag{animation:spUp .45s .4s ease both}
+  .sp-dot{opacity:0;animation:spBurst .7s 1s ease-out forwards}
+  .sp-scrib{stroke-dasharray:420;stroke-dashoffset:420;animation:spDraw .8s .55s ease-in-out forwards}
+}
+@keyframes spPop{0%{transform:scale(.4) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(-4deg);opacity:1}}
+@keyframes spDraw{to{stroke-dashoffset:0}}
+@keyframes spFade{to{opacity:1}}
+@keyframes spUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes spBurst{0%{opacity:0;transform:translate(0,0) scale(.3)}40%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1)}}
 
 /* ---- trackers as streak cards ---- */
 .sum-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
@@ -347,6 +381,36 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
 </head>
 <body>
 
+<div class="splash" id="splash" aria-hidden="true">
+  <div class="sp-inner">
+    <div class="sp-logo">
+      <svg viewBox="0 0 120 130">
+        <g class="sp-card">
+          <rect x="14" y="22" width="92" height="96" rx="12" fill="#FFFDF8" stroke="#2B2B2B" stroke-width="5"/>
+          <path d="M14 34a12 12 0 0 1 12-12h68a12 12 0 0 1 12 12v12H14z" fill="#E9A23B" stroke="#2B2B2B" stroke-width="5" stroke-linejoin="round"/>
+          <rect x="34" y="12" width="8" height="22" rx="4" fill="#2B2B2B"/><rect x="78" y="12" width="8" height="22" rx="4" fill="#2B2B2B"/>
+          <path class="sp-fill" d="M60 104C38 90 30 78 34 68c4-10 18-10 26 1 8-11 22-11 26-1 4 10-4 22-26 36z" fill="#F08AA8"/>
+          <path class="sp-heart" d="M60 104C38 90 30 78 34 68c4-10 18-10 26 1 8-11 22-11 26-1 4 10-4 22-26 36z" fill="none" stroke="#2B2B2B" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <i class="sp-dot" style="left:6px;top:30px;background:#D7FF4A;--dx:-26px;--dy:-22px"></i>
+      <i class="sp-dot" style="right:4px;top:20px;background:#4AE3FF;--dx:28px;--dy:-26px"></i>
+      <i class="sp-dot" style="left:10px;bottom:16px;background:#FFD166;--dx:-30px;--dy:20px"></i>
+      <i class="sp-dot" style="right:8px;bottom:22px;background:#FF7AC6;--dx:30px;--dy:22px"></i>
+    </div>
+    <div class="sp-title">Doodle Days</div>
+    <svg width="180" height="16" viewBox="0 0 180 16" aria-hidden="true" style="margin-top:-6px"><path class="sp-scrib" d="M4 10c20-8 32 6 52 0s30-8 50 0 34 6 70-2" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" opacity=".7"/></svg>
+    <div class="sp-tag" id="spTag">a fresh page awaits</div>
+    <div class="sp-greet" id="spGreet"></div>
+  </div>
+  <div class="sp-skip">tap to skip</div>
+</div>
+<script>
+(function(){var t=['a fresh page awaits','hello, maker','one little doodle a day','your sketchbook calendar'];
+ var el=document.getElementById('spTag'); if(el) el.textContent=t[Math.floor(Math.random()*t.length)];
+ var sp=document.getElementById('splash'); sp.addEventListener('click',function(){sp.classList.add('out');setTimeout(function(){sp.remove();},400);});
+ setTimeout(function(){if(sp.isConnected){sp.classList.add('out');setTimeout(function(){sp.remove();},400);}},5000);})();
+</script>
 <header class="mat">
   <div class="mat-inner">
     <h1 class="brand">Doodle Days <small>draw · plan · track</small></h1>
@@ -540,7 +604,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <button class="btn danger" id="wipeBtn">Delete everything</button>
       </div>
     </div>
-    <div class="small muted">Doodle Days v2.1 · Works offline · No account, no ads</div>
+    <div class="small muted">Doodle Days v2.3 · Works offline · No account, no ads</div>
   </div>
 </div>
 
@@ -706,7 +770,9 @@ function applyTheme(){
   const a=S.meta.accent;
   if(a){const on=onColor(a);r.style.setProperty('--accent',a);r.style.setProperty('--on-accent',on);r.style.setProperty('--accent-soft',`color-mix(in srgb, ${a} 18%, var(--surface))`);
     if(sk!=='pixel'){r.style.setProperty('--mat',a);r.style.setProperty('--on-mat',on);}}
-  const m=document.querySelector('meta[name="theme-color"]'); if(m){const c=getComputedStyle(r).getPropertyValue('--mat').trim(); if(c) m.setAttribute('content',c);}
+  const cs=getComputedStyle(r), mat=cs.getPropertyValue('--mat').trim(), onm=cs.getPropertyValue('--on-mat').trim();
+  const m=document.querySelector('meta[name="theme-color"]'); if(m&&mat) m.setAttribute('content',mat);
+  try{localStorage.setItem('dd-look',JSON.stringify({skin:sk,mode,mat,on:onm}));}catch(e){}
 }
 let actx=null;
 function tone(seq){ if(!S.meta.sound) return; try{
@@ -1291,6 +1357,16 @@ addEventListener('keydown',e=>{if(e.key!=='Escape')return;
   if(!$('#viewer').hidden) $('#viewer').hidden=true; else if(!$('#trModal').hidden) closeModal('#trModal'); else if(!$('#revealModal').hidden) closeModal('#revealModal'); else if(!$('#evModal').hidden) closeModal('#evModal'); else if(!$('#setModal').hidden) closeModal('#setModal'); else hidePanel(false);});
 matchMedia('(max-width:999.98px)').addEventListener('change',e=>{if(!e.matches){panelOpen=false;$('#panel').classList.remove('open');$('#scrim').hidden=true;document.body.style.overflow='';}});
 
+/* ================= launch screen ================= */
+function finishSplash(){
+  const sp=$('#splash'); if(!sp) return;
+  const hr=new Date().getHours(), hi=hr<5?'Up late':hr<12?'Good morning':hr<18?'Good afternoon':'Good evening';
+  let best=null; S.meta.trackers.forEach(t=>{const s=streakOf(t.id); if(s.count>=2&&(!best||s.count>best.n)) best={n:s.count,name:t.name};});
+  const g=$('#spGreet'); g.textContent=best?`${hi}! ${best.n}-day ${best.name} streak 🔥`:`${hi}! Tap a day to start doodling`;
+  const fast=reduced(), since=performance.now(), minShow=fast?500:1250;
+  setTimeout(()=>{g.classList.add('show'); setTimeout(()=>{sp.classList.add('out'); setTimeout(()=>sp.remove(),400);}, fast?500:900);}, Math.max(0,minShow-since));
+}
+
 /* ================= start ================= */
 (async function start(){
   storageOk=await DB.open();
@@ -1300,6 +1376,7 @@ matchMedia('(max-width:999.98px)').addEventListener('change',e=>{if(!e.matches){
   applyTheme(); buildTools(); buildTray();
   const fresh=!S.meta.trackers.length&&!Object.keys(S.days).length&&!Object.keys(S.events).length&&!S.meta.started;
   if(fresh){S.meta.started=true;loadSample();} else openDay(sel,false);
+  finishSplash();
   checkReminders(); setInterval(checkReminders,30000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden){checkReminders();}});
   if('serviceWorker' in navigator && location.protocol.startsWith('http')){try{navigator.serviceWorker.register('sw.js').catch(()=>{});}catch(e){}}
