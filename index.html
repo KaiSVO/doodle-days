@@ -281,10 +281,13 @@ input[type=text],input[type=search],input[type=date],input[type=time],select,tex
 /* year */
 .year-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
 .years{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+@media (max-width:600px){.years{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.ym{padding:8px}.ym h3{font-size:1.1rem}.ym .g{gap:2px}.px{font-size:.54rem;border-radius:2px}}
 .ym{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px}
 .ym h3{font-family:var(--display);font-size:1.35rem;margin:0 0 6px;font-weight:400}
 .ym .g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}
-.px{aspect-ratio:1;border-radius:3px;background:var(--surface-2);border:1px solid var(--line);padding:0}
+.px{aspect-ratio:1;border-radius:3px;background:var(--surface-2);border:1px solid var(--line);padding:0;display:grid;place-items:center;font-family:var(--mono);font-size:.62rem;line-height:1;color:var(--muted);font-variant-numeric:tabular-nums;min-width:0;overflow:hidden}
+.px.any{color:var(--fg)}
+.px.today{font-weight:700;color:var(--fg)}
 .px.blank{visibility:hidden}
 .px.any{background:var(--accent-soft);border-color:var(--accent)}
 .px.today{outline:2px solid var(--today);outline-offset:0}
@@ -606,7 +609,7 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
         <button class="btn danger" id="wipeBtn">Delete everything</button>
       </div>
     </div>
-    <div class="small muted">Doodle Days v2.4 · Works offline · No account, no ads</div>
+    <div class="small muted">Doodle Days v2.5 · Works offline · No account, no ads</div>
   </div>
 </div>
 
@@ -826,7 +829,7 @@ function toggleTag(k,id,el){
 }
 function setView(v){
   if(v==='settings'){openSettings();return;}
-  view=v;
+  view=v; if(v==='year') scrollYearToNow=true;
   document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-current',String(t.dataset.view===v)));
   $('#view-month').hidden=v!=='month'; $('#view-year').hidden=v!=='year'; $('#view-list').hidden=v!=='list';
   renderView();
@@ -959,6 +962,7 @@ async function revealImage(){
 }
 
 /* ================= year ================= */
+let scrollYearToNow=false;
 function renderYear(){
   $('#yearLabel').textContent=yy;
   const sel_=$('#yearFilter');
@@ -972,13 +976,14 @@ function renderYear(){
     const cells=[];for(let i=0;i<lead;i++) cells.push(h('i',{class:'px blank'}));
     for(let d=1;d<=dim;d++){const k=K(yy,m,d),e=S.days[k];let cls='px',style=null;
       const tags=(e&&e.tags||[]).filter(id=>tmap[id]);
-      if(yearFilter==='all'){ if(tags.length){style=`background:${tmap[tags[0]].color};border-color:${tmap[tags[0]].color}`;total++;} else if(e){cls+=' any';total++;} }
-      else if(tags.includes(yearFilter)){style=`background:${tmap[yearFilter].color};border-color:${tmap[yearFilter].color}`;total++;}
+      if(yearFilter==='all'){ if(tags.length){style=`background:${tmap[tags[0]].color};border-color:${tmap[tags[0]].color};color:${onColor(tmap[tags[0]].color)}`;total++;} else if(e){cls+=' any';total++;} }
+      else if(tags.includes(yearFilter)){style=`background:${tmap[yearFilter].color};border-color:${tmap[yearFilter].color};color:${onColor(tmap[yearFilter].color)}`;total++;}
       if(k===tk) cls+=' today';
-      cells.push(h('button',{class:cls,style,title:`${d} ${mn}`,'aria-label':`${d} ${mn}`,onclick:()=>{vy=yy;vm=m;setView('month');openDay(k);}}));}
-    return h('div',{class:'ym'},h('h3',{text:mn}),h('div',{class:'g'},order.map(d=>h('span',{class:'muted',style:'font-size:.6rem;text-align:center;font-family:var(--mono)',text:WD[d][0]})),cells));
+      cells.push(h('button',{class:cls,style,title:`${d} ${mn}`,'aria-label':`${d} ${mn}`,onclick:()=>{vy=yy;vm=m;setView('month');openDay(k);}},String(d)));}
+    return h('div',{class:'ym','data-m':m},h('h3',{text:mn}),h('div',{class:'g'},order.map(d=>h('span',{class:'muted',style:'font-size:.6rem;text-align:center;font-family:var(--mono)',text:WD[d][0]})),cells));
   });
   $('#years').replaceChildren(...months);
+  if(scrollYearToNow&&yy===now.getFullYear()){scrollYearToNow=false;const el=document.querySelector(`.ym[data-m="${now.getMonth()}"]`);if(el&&now.getMonth()>1)setTimeout(()=>el.scrollIntoView({block:'center'}),30);}
   const name=yearFilter==='all'?'days with an entry':`days of ${tmap[yearFilter].name}`;
   $('#yearLegend').replaceChildren(h('strong',{text:`${total} ${name} in ${yy}`}),
     ...(yearFilter==='all'?S.meta.trackers.map(t=>h('span',{},h('i',{class:'dot',style:`background:${t.color};margin-right:5px`}),t.name)):[]));
