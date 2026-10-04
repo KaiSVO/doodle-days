@@ -1,5 +1,5 @@
 // Doodle Days service worker: keeps the app working offline.
-const CACHE = 'doodle-days-v22';
+const CACHE = 'doodle-days-v27';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
