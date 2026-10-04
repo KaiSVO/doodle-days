@@ -1233,7 +1233,7 @@ const pendingDays=new Set();
 function saveDay(k){clearTimeout(dayTimers[k]);pendingDays.add(k);dayTimers[k]=setTimeout(()=>writeDay(k),300);}
 function writeDay(k){clearTimeout(dayTimers[k]);pendingDays.delete(k);{
   const e=S.days[k];
-  if(e && !e.note && !e.doodle && !e.color && !(e.tags&&e.tags.length) && !(e.photos&&e.photos.length)){delete S.days[k];DB.del('d:'+k);}
+  if(e && !e.note && !e.doodle && !e.color && !e.paper && !(e.tags&&e.tags.length) && !(e.photos&&e.photos.length)){delete S.days[k];DB.del('d:'+k);}
   else if(e) DB.put('d:'+k,e); else DB.del('d:'+k);
   flashSaved();}}
 const saveEvent=ev=>{S.events[ev.id]=ev;DB.put('e:'+ev.id,ev);};
