@@ -170,7 +170,8 @@
 .rv-pic span{position:absolute;top:6px;left:6px;background:var(--accent);color:var(--on-accent);font-family:var(--mono);font-size:.72rem;padding:1px 6px;border-radius:6px}
 .rv-tr{display:flex;flex-direction:column;gap:8px}
 .rv-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.rv-row .nm{font-weight:700;flex:1;min-width:0}
+.rv-row .nm{font-weight:700;flex:1 1 9em;min-width:0;overflow-wrap:anywhere}
+.rv-row .count{margin-left:auto}
 .badge{background:var(--today);color:#1E2621;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px}
 .reveal-banner{border-style:solid;border-color:var(--today);background:var(--surface)}
 
@@ -411,7 +412,8 @@ textarea{width:100%;min-height:96px;resize:vertical;line-height:1.4}
 .wd-pic.empty-pic{color:#B8B2A6;font-size:1.2rem;border-style:dashed}
 @media (min-width:1240px){
   .wgrid{grid-template-columns:repeat(7,minmax(0,1fr))}
-  .wday{display:flex;flex-direction:column}
+  .wday{display:flex;flex-direction:column;align-items:stretch}
+  .wd-ev{flex-direction:column;gap:0}
   .wd-head{flex-direction:row;align-items:baseline;gap:6px;width:100%}
   .wd-pic{width:100%;order:-1}
 }
@@ -1116,7 +1118,7 @@ const INKS=["#2B2B2B","#3A7BD5","#D9577A","#E9A23B","#3E9B6E","#8A5CC7","#C4683A
 const SIZES=[3,7,14];
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const narrow=()=>matchMedia('(max-width:999.98px)').matches;
-const APP_VERSION='3.7';
+const APP_VERSION='3.7.1';
 const CONTACT_EMAIL='sidelock24@gmail.com';
 const PLAY_ID='io.github.kaisvo.doodledays';  // Play Store package name
 const DAY=864e5;
@@ -1164,7 +1166,7 @@ const wdLong=d=>cap(df({weekday:'long'}).format(d));
 const wdShort=d=>cap(df({weekday:'short'}).format(d)).replace(/\.$/,'');
 const wdNarrow=d=>df({weekday:'narrow'}).format(d).toLocaleUpperCase(LOC);
 const monShort=d=>df({month:'short'}).format(d).replace(/\.$/,'');
-const fullDay=d=>cap(df({weekday:'long',day:'numeric',month:'long'}).format(d));
+const fullDay=d=>cap(df({weekday:'long',day:'numeric',month:'long'}).formatToParts(d).map(p=>p.type==='weekday'?df({weekday:'long'}).format(d):p.value).join('')); // standalone weekday: Chromium's uk ICU uses accusative 'середу'
 const wdOf=i=>new Date(2026,0,4+i); // 4 Jan 2026 is a Sunday
 function rangeLabel(a,b){try{return cap(df({day:'numeric',month:'short',year:'numeric'}).formatRange(a,b));}catch(e){return `${dayMonth(a)} – ${dayMonth(b)} ${b.getFullYear()}`;}}
 // translate the static page text (kept as English in the HTML)
@@ -1699,17 +1701,22 @@ function rr(x,X,Y,w,hh,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+hh,r
 function cssv(){const cs=getComputedStyle(document.documentElement);return n=>cs.getPropertyValue(n).trim();}
 async function loadFonts(v){try{await Promise.all([document.fonts.load(`700 80px ${v('--display')}`),document.fonts.load(`600 30px ${v('--body')}`)]);}catch(e){}}
 /* shared frame for shareable pictures: page colour, coloured header with title and subtitle, footer credit */
+/* canvas text never runs into its neighbour: shrink the font (down to 70%), then shorten with an ellipsis */
+function fitText(x,t,maxW,w,sz,f){const min=sz*.7;x.font=`${w} ${sz}px ${f}`;
+  while(x.measureText(t).width>maxW&&sz>min){sz-=2;x.font=`${w} ${sz}px ${f}`;}
+  if(x.measureText(t).width>maxW){while(t.length>1&&x.measureText(t+'…').width>maxW)t=t.slice(0,-1);t+='…';}
+  return t;}
 function posterFrame(x,v,W,H,title,sub,bar,ts){const disp=v('--display'),body=v('--body');
   x.fillStyle=v('--bg');x.fillRect(0,0,W,H);x.fillStyle=v('--mat');x.fillRect(0,0,W,bar);
-  x.fillStyle=v('--on-mat');x.font=`${v('--dw')||700} ${ts}px ${disp}`;x.fillText(title,64,bar-100,W-128);
-  x.font=`500 32px ${body}`;x.globalAlpha=.85;x.fillText(sub,64,bar-44,W-128);x.globalAlpha=1;
+  x.fillStyle=v('--on-mat');x.fillText(fitText(x,title,W-128,v('--dw')||700,ts,disp),64,bar-100);
+  x.globalAlpha=.85;x.fillText(fitText(x,sub,W-128,500,32,body),64,bar-44);x.globalAlpha=1;
   x.fillStyle=v('--muted');x.font=`500 26px ${body}`;x.fillText(tx('made with Doodle Days'),64,H-48);}
 /* ---- scrapbook-style look-back pictures (month and year) ---- */
 function pBg(x,v,W,H){x.fillStyle=v('--bg');x.fillRect(0,0,W,H);x.fillStyle=v('--dot');for(let i=30;i<W;i+=30)for(let j=30;j<H;j+=30){x.beginPath();x.arc(i,j,2,0,7);x.fill();}}
 function pSticker(x,id,cx,cy,s,rot){const im=stickerImg[id];if(!im||!im.complete)return;x.save();x.translate(cx,cy);x.rotate(rot);x.drawImage(im,-s/2,-s/2,s,s);x.restore();}
 function pHead(x,v,kicker,title){
-  x.fillStyle=v('--accent');x.font=`600 24px ${v('--mono')}`;x.fillText(kicker.toLocaleUpperCase(LOC).split('').join(String.fromCharCode(8202)),66,82);
-  x.fillStyle=v('--fg');x.font=`${v('--dw')||700} 104px ${v('--display')}`;x.fillText(title,60,186,860);
+  x.fillStyle=v('--accent');x.fillText(fitText(x,kicker.toLocaleUpperCase(LOC).split('').join(String.fromCharCode(8202)),860,600,24,v('--mono')),66,82);
+  x.fillStyle=v('--fg');title=fitText(x,title,860,v('--dw')||700,104,v('--display'));x.fillText(title,60,186);
   const w=Math.min(x.measureText(title).width,860);x.strokeStyle=v('--today');x.lineWidth=11;x.lineCap='round';x.globalAlpha=.85;
   x.beginPath();x.moveTo(66,212);for(let t=0;t<=w;t+=40)x.quadraticCurveTo(66+t+20,212+(t/40%2?-9:9),66+t+40,212);x.stroke();x.globalAlpha=1;
   pSticker(x,'star',1000,74,96,.22);}
@@ -1725,15 +1732,16 @@ async function pPolaroids(x,v,items,top,W,max){
     if(it.doodle){drawPaper(x,ix,iy,iw,ihh,it.paper);if(img)x.drawImage(img,ix,iy,iw,ihh);}
     else if(img){const sc=Math.max(iw/img.width,ihh/img.height);x.drawImage(img,ix+(iw-img.width*sc)/2,iy+(ihh-img.height*sc)/2,img.width*sc,img.height*sc);}
     x.restore();
-    x.fillStyle='#4A403A';x.font=`500 26px ${v('--display')}`;x.textAlign='center';x.fillText(it.label,0,ph/2-18,pw-30);x.textAlign='left';
+    x.fillStyle='#4A403A';x.textAlign='center';x.fillText(fitText(x,it.label,pw-30,500,26,v('--display')),0,ph/2-18);x.textAlign='left';
     x.rotate(-rot*2);x.fillStyle=i%2?'rgba(233,162,59,.62)':'rgba(255,122,198,.55)';x.fillRect(-48,-ph/2-16,96,32);x.restore();});
   return top+rows*(ph+22);}
 function pBadges(x,v,list,cy,W){
   const r=100, gap=(W-128-list.length*2*r)/Math.max(list.length-1,1);
   list.forEach(([num,label],i)=>{const cx=64+r+i*(2*r+gap);
     x.fillStyle=v('--accent-soft');x.beginPath();x.arc(cx,cy,r,0,7);x.fill();x.strokeStyle=v('--accent');x.lineWidth=4;x.setLineDash([10,9]);x.beginPath();x.arc(cx,cy,r-10,0,7);x.stroke();x.setLineDash([]);
-    x.fillStyle=v('--fg');x.textAlign='center';x.font=`${v('--dw')||700} 74px ${v('--display')}`;x.fillText(String(num),cx,cy+14,2*r-30);
-    x.font=`500 19px ${v('--body')}`;x.fillStyle=v('--muted');x.fillText(label,cx,cy+50,2*r-60);x.textAlign='left';});}
+    x.font=`500 19px ${v('--body')}`;const lw=2*r-80, ls=wrapLines(x,label,lw,2), up=ls.length>1?12:0;
+    x.fillStyle=v('--fg');x.textAlign='center';x.fillText(fitText(x,String(num),2*r-60,v('--dw')||700,74,v('--display')),cx,cy+8-up);
+    x.fillStyle=v('--muted');ls.forEach((l,k)=>x.fillText(fitText(x,l,lw,500,19,v('--body')),cx,cy+40-up+k*22));x.textAlign='left';});}
 function pMiniMonth(x,v,y,m,X,Y,cell,gap,label){
   const lead=(new Date(y,m,1).getDay()-S.meta.weekStart+7)%7, dim=new Date(y,m+1,0).getDate();
   if(label){x.fillStyle=v('--fg');x.font=`600 22px ${v('--body')}`;x.fillText(label,X,Y-12);}
@@ -1752,8 +1760,8 @@ async function revealImage(){
   pMiniMonth(x,v,y,m,64,by+34,items.length>3?34:44,6,cap(monthIn(m)));
   let ty=by+38; x.font=`600 30px ${v('--body')}`;
   st.tr.filter(t=>t.n).slice(0,5).forEach(({q,n,best})=>{x.fillStyle=q.color;x.beginPath();x.arc(450,ty-10,11,0,7);x.fill();
-    x.fillStyle=v('--fg');x.font=`600 30px ${v('--body')}`;x.fillText(q.name,474,ty,330);
-    x.fillStyle=v('--muted');x.font=`500 24px ${v('--mono')}`;x.textAlign='right';x.fillText(tn('nDays',n),W-64,ty);x.textAlign='left';ty+=52;});
+    x.fillStyle=v('--muted');x.font=`500 24px ${v('--mono')}`;const cnt=tn('nDays',n),cw=x.measureText(cnt).width;x.textAlign='right';x.fillText(cnt,W-64,ty);x.textAlign='left';
+    x.fillStyle=v('--fg');x.fillText(fitText(x,q.name,W-64-cw-24-474,600,30,v('--body')),474,ty);ty+=52;});
   pFoot(x,v,H);
   return new Promise(r=>c.toBlob(r,'image/png'));
 }
@@ -1774,7 +1782,7 @@ async function yearPoster(y){
   pBadges(x,v,[[made,tn('daysMakingLbl',made)],[doodles,tn('doodlesLbl',doodles)],[best,tx('Longest streak')]],yb+116,W);
   const by=yb+250, cell=16, gap=3, mw=7*(cell+gap)+26;
   for(let m=0;m<12;m++) pMiniMonth(x,v,y,m,64+(m%6)*((W-128-mw)/5),by+34+Math.floor(m/6)*140,cell,gap,cap(df({month:'short'}).format(new Date(y,m,15))));
-  if(top){x.fillStyle=v('--fg');x.font=`600 30px ${v('--body')}`;x.fillText(`${tx('Top activity')}: ${top.name} · ${tn('nDays',topN)}`,64,by+340,W-128);}
+  if(top){x.fillStyle=v('--fg');x.fillText(fitText(x,`${tx('Top activity')}: ${top.name} · ${tn('nDays',topN)}`,W-128,600,30,v('--body')),64,by+340);}
   pFoot(x,v,H);
   return new Promise(r=>c.toBlob(r,'image/png'));
 }
@@ -1812,9 +1820,9 @@ async function dayImage(k){
   if(e.note){x.fillStyle=v('--fg'); x.font=`500 38px ${body}`; for(const l of wrapLines(x,e.note,W-160,4)){x.fillText(l,80,y); y+=52;} y+=18;}
   const trs=(e.tags||[]).map(id=>S.meta.trackers.find(q=>q.id===id)).filter(Boolean);
   let cx=80; x.font=`600 30px ${body}`;
-  for(const q of trs){const w=x.measureText(q.name).width+74; if(cx+w>W-80){cx=80;y+=66;} if(y>H-110)break;
+  for(const q of trs){const nm=fitText(x,q.name,W-160-74,600,30,body),w=x.measureText(nm).width+74; if(cx+w>W-80){cx=80;y+=66;} if(y>H-110)break;
     x.fillStyle=q.color; x.globalAlpha=.2; rr(x,cx,y-38,w,54,27); x.fill(); x.globalAlpha=1; x.beginPath(); x.arc(cx+28,y-11,11,0,Math.PI*2); x.fill();
-    x.fillStyle=v('--fg'); x.fillText(q.name,cx+48,y); cx+=w+14;}
+    x.fillStyle=v('--fg'); x.fillText(nm,cx+48,y); cx+=w+14;}
   return new Promise(r=>c.toBlob(r,'image/png'));
 }
 async function shareFile(blob,name,title){
