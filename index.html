@@ -22,7 +22,7 @@
 <link rel="icon" type="image/png" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Fredoka:wght@500;600;700&family=Silkscreen&family=Fraunces:ital,opsz,wght@1,9..144,500&family=Playfair+Display:ital,wght@1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Figtree:wght@400;500;600;700&family=DM+Mono:wght@400;500&family=Fredoka:wght@500;600;700&family=Silkscreen&family=Fraunces:ital,opsz,wght@1,9..144,500&family=Playfair+Display:ital,wght@1,700&family=Nunito:wght@400;500;600;700;800&family=Caveat:wght@700&family=Lora:ital,wght@1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Press+Start+2P&display=swap">
 <style>
 /* Layout: cutting-mat header; views (month / year / list) on dot-grid paper; day editor as a side panel on wide screens and a full sheet on phones; tab bar at the bottom on phones */
 :root{
@@ -32,9 +32,9 @@
   --accent:#1F5C4A; --on-accent:#FFFFFF; --accent-soft:#E2EEE8;
   --today:#E9A23B; --sheet:#FFFDF8; --sheet-line:#E8E4DA; --danger:#B23A3A;
   --scrim:rgba(14,20,17,.55);
-  --display:"Caveat Brush","Comic Sans MS","Bradley Hand",cursive;
-  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --display:"Caveat Brush","Caveat","Comic Sans MS","Bradley Hand",cursive;
+  --body:"Figtree","Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono","IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
   --r:12px; --rs:9px; --tabh:62px;
 }
 @media (prefers-color-scheme: dark){
@@ -59,18 +59,18 @@
 /* ---- skins ---- */
 :root[data-skin="candy"]{--bg:#F6F1FF;--dot:#E4DAFB;--surface:#FFFFFF;--surface-2:#F3EEFF;--fg:#24154F;--muted:#6C5FA0;--line:#E3DAFA;
   --mat:#6C3CF0;--mat-line:rgba(255,255,255,.10);--on-mat:#FFFFFF;--accent:#6C3CF0;--on-accent:#FFFFFF;--accent-soft:#ECE5FF;--today:#FF7AC6;
-  --display:"Fredoka","Figtree",system-ui,sans-serif;--r:20px;--rs:14px}
+  --display:"Fredoka","Nunito","Figtree",system-ui,sans-serif;--r:20px;--rs:14px}
 :root[data-skin="candy"][data-theme="dark"]{--bg:#140C2E;--dot:#24194A;--surface:#1E1442;--surface-2:#180F38;--fg:#F2EDFF;--muted:#A99BD6;--line:#33276A;
   --mat:#4B22C9;--on-mat:#FFFFFF;--accent:#B69CFF;--on-accent:#140C2E;--accent-soft:#2C1F5E;--today:#FF7AC6;--scrim:rgba(0,0,0,.6);color-scheme:dark}
 :root[data-skin="pixel"]{--bg:#16131F;--dot:#221D30;--surface:#1F1A2C;--surface-2:#2A2438;--fg:#F4EFFF;--muted:#A59CC2;--line:#3A3350;
   --mat:#241E35;--mat-line:rgba(255,255,255,.05);--on-mat:#FFD166;--accent:#06D6A0;--on-accent:#0B1A14;--accent-soft:#1D3A33;--today:#FFD166;--danger:#FF6B6B;
-  --display:"Silkscreen","DM Mono",monospace;--r:0px;--rs:0px;--scrim:rgba(0,0,0,.65);color-scheme:dark}
+  --display:"Silkscreen","Press Start 2P","DM Mono",monospace;--r:0px;--rs:0px;--scrim:rgba(0,0,0,.65);color-scheme:dark}
 :root[data-skin="scrapbook"]{--bg:#F5E6D3;--dot:#E3CCB1;--surface:#FFFBF5;--surface-2:#FBF1E4;--fg:#4A2A17;--muted:#74553F;--line:#E8D2BA;
   --mat:#8E5530;--mat-line:rgba(255,255,255,.12);--on-mat:#FFF6EA;--accent:#D84F78;--on-accent:#FFFFFF;--accent-soft:#FBE0E8;--today:#F5B83D;
-  --display:"Caveat Brush","Bradley Hand",cursive;--r:6px;--rs:4px}
+  --display:"Caveat Brush","Caveat","Bradley Hand",cursive;--r:6px;--rs:4px}
 :root[data-skin="garden"]{--bg:#EEF2E8;--dot:#DCE4D2;--surface:#FBFCF8;--surface-2:#F3F6EE;--fg:#2F4230;--muted:#55654F;--line:#DAE3D2;
   --mat:#4F6E4A;--mat-line:rgba(255,255,255,.10);--on-mat:#F6FAF2;--accent:#5E7F58;--on-accent:#FFFFFF;--accent-soft:#E3ECDC;--today:#E7A9B8;
-  --display:"Fraunces",Georgia,serif;--r:18px;--rs:12px}
+  --display:"Fraunces","Lora",Georgia,serif;--r:18px;--rs:12px}
 :root[data-skin="pixel"] *{border-radius:0!important}
 :root[data-skin="pixel"] body{background-image:linear-gradient(var(--dot) 1px,transparent 1px),linear-gradient(90deg,var(--dot) 1px,transparent 1px)}
 :root[data-skin="pixel"] .brand{font-size:1.5rem}
@@ -1180,7 +1180,7 @@ const INKS=["#2B2B2B","#3A7BD5","#D9577A","#E9A23B","#3E9B6E","#8A5CC7","#C4683A
 const SIZES=[3,7,14];
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const narrow=()=>matchMedia('(max-width:999.98px)').matches;
-const APP_VERSION='3.9';
+const APP_VERSION='3.9.1';
 const CONTACT_EMAIL='sidelock24@gmail.com';
 const PLAY_ID='io.github.kaisvo.doodledays';  // Play Store package name
 const DAY=864e5;
@@ -1798,7 +1798,7 @@ function renderRevealBanner(){
 }
 function rr(x,X,Y,w,hh,r){x.beginPath();x.moveTo(X+r,Y);x.arcTo(X+w,Y,X+w,Y+hh,r);x.arcTo(X+w,Y+hh,X,Y+hh,r);x.arcTo(X,Y+hh,X,Y,r);x.arcTo(X,Y,X+w,Y,r);x.closePath();}
 function cssv(){const cs=getComputedStyle(document.documentElement);return n=>cs.getPropertyValue(n).trim();}
-async function loadFonts(v){try{await Promise.all([document.fonts.load(`700 80px ${v('--display')}`),document.fonts.load(`600 30px ${v('--body')}`)]);}catch(e){}}
+async function loadFonts(v){const t='Aa1 жїєґ łąę';try{await Promise.all([document.fonts.load(`700 80px ${v('--display')}`,t),document.fonts.load(`600 30px ${v('--body')}`,t),document.fonts.load(`500 24px ${v('--mono')}`,t)]);}catch(e){}}
 /* shared frame for shareable pictures: page colour, coloured header with title and subtitle, footer credit */
 /* canvas text never runs into its neighbour: shrink the font (down to 70%), then shorten with an ellipsis */
 function fitText(x,t,maxW,w,sz,f){const min=sz*.7;x.font=`${w} ${sz}px ${f}`;
