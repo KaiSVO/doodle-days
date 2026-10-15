@@ -1,0 +1,64 @@
+DOODLE DAYS · GOOGLE PLAY STORE LISTING
+
+App name (30 characters max)
+Doodle Days: Doodle Calendar
+
+Short description (80 characters max)
+A cosy calendar you can draw in. Doodle, plan and track your making every day.
+
+Full description (4000 characters max)
+Doodle Days is a calendar you can draw in. Every day gets its own little page for a doodle, a note, a photo and the things you made. It's made for artists, crafters and anyone who likes to keep track of life with a pen instead of a spreadsheet.
+
+DRAW ON EVERY DAY
+• Doodle with pen, marker and eraser. Lines get thicker when you press harder with a stylus.
+• Add stickers from the sticker tray, or tap a recent one.
+• Undo and redo with a two- or three-finger tap.
+
+PLAN YOUR MAKING
+• Add plans for classes, markets, fairs and deadlines, with repeats and reminders.
+• Month, week and year views.
+• Colour a day to mark it, like green for a day off.
+• Search finds notes, plans and activities, and matching days glow on the calendar.
+
+BUILD LITTLE STREAKS
+• Track the things you make, like painting, knitting or shop orders.
+• Tick "Done today" to grow a streak. One missed day a week is forgiven.
+• Set a monthly goal and see how close you are.
+• At the end of each month, get a look back at everything you made.
+
+MAKE IT YOURS
+• Themes, fonts and sticker finishes.
+• Light and dark mode.
+• Available in English, Ukrainian, Spanish, Portuguese, German, French and Polish.
+
+PRIVATE BY DESIGN
+• Your entries stay on your device. No account needed, no ads, no tracking.
+• Lock the app with a PIN or your fingerprint.
+• Save a backup file to move to a new phone.
+• Deleted something by mistake? It stays in Recently deleted for 30 days.
+
+SUPPORTER (ONE-TIME, OPTIONAL)
+Doodle Days is free. Supporter keeps it going and adds extras:
+• Three extra themes: Scrapbook, Cosy garden and Midnight rose
+• More fonts for headings and text
+• Sticker finishes: hand-painted, paper cut-out and enamel pin
+• Three extra sticker packs: Botanical, Market day and Cosy season
+• Watercolour and crayon brushes, plus kraft, grid and dot paper
+• A year-in-review poster of your doodles
+• Icon packs for activities and plans: Studio, Everyday and Shop
+• Plus every new theme, sticker pack and icon pack we add later
+
+Supporter is $0.99 a month, $5.99 a year (just 50¢ a month, half price), or $21.99 once for life.
+
+---
+Category: Productivity (or Art & Design)
+Tags to pick in Play Console: Calendar, Journal, Drawing
+Contact email: sidelock24@gmail.com
+Privacy policy URL: https://doodle-days.vercel.app/privacy.html
+Content rating: answer the questionnaire; no violence, no user chat, no ads → expected rating "Everyone" / PEGI 3
+Data safety: no data collected or shared (entries stay on the device). Update this when Google Drive sync ships.
+
+Images in this folder
+• screenshot-1 … screenshot-6.png: phone screenshots, 1080×1920
+• feature-graphic.png: 1024×500
+• App icon: use icons/icon-512.png from the repo

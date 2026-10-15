@@ -1,0 +1,604 @@
+0|Saisis ton code PIN
+1|Code PIN oublié ?
+2|Annuler
+3|Pour réinitialiser ton code PIN, Doodle Days doit être effacée de cet appareil. Tu pourras ensuite récupérer tes entrées depuis un fichier de sauvegarde.
+4|Effacer et réinitialiser
+5|dessine · planifie · suis
+6|Vues
+7|Mois
+8|Semaine
+9|Année
+10|Projets
+11|Réglages
+12|Ouvrir
+13|Ça fait un moment que tu n'as pas fait de sauvegarde. Fais-en une pour garder tes dessins à l'abri.
+14|Sauvegarder
+15|Pas maintenant
+16|Tu aimes Doodle Days ?
+17|Oui, j'adore !
+18|Pas vraiment
+19|Plus tard
+20|Voici des entrées d'exemple pour te montrer comment ça marche. Efface-les quand tu veux commencer les tiennes.
+21|Effacer les exemples
+22|Mois précédent
+23|Aujourd'hui
+24|Ton mois
+25|Mois suivant
+26|Nouvelle activité
+27|Semaine précédente
+28|Cette semaine
+29|Semaine suivante
+30|Année précédente
+31|Année suivante
+32|Afficher
+33|Chercher dans les notes et projets
+34|Nouveau projet
+35|Jour
+36|Retour au calendrier
+37|Partager ce jour
+38|Jour précédent
+39|Jour suivant
+40|Dessin
+41|Outils de dessin
+42|Zone de dessin du jour
+43|Stickers rapides
+44|Ajouter un projet
+45|Note
+46|Qu'as-tu créé, prévu ou remarqué aujourd'hui ?
+47|Sur quoi as-tu travaillé ?
+48|Photos
+49|Quoi
+50|Marché artisanal, cours de poterie
+51|Date
+52|Heure (facultatif)
+53|Répétition
+54|Ne se répète pas
+55|Tous les jours
+56|Toutes les semaines
+57|Tous les mois
+58|Tous les ans
+59|Rappel
+60|Aucun rappel
+61|À l'heure prévue
+62|10 min avant
+63|30 min avant
+64|1 heure avant
+65|1 jour avant
+66|Les rappels s'affichent quand Doodle Days est ouverte. Pour en recevoir appli fermée, enregistre le projet puis touche « Ajouter à l'agenda du téléphone ».
+67|Supprimer
+68|Ajouter à l'agenda du téléphone
+69|Enregistrer
+70|Fermer les réglages
+71|Doodle Days Supporter
+72|L'appli reste gratuite. Un déblocage Supporter unique ajoute des bonus et l'aide à continuer :
+73|Trois thèmes en plus : Scrapbook, Jardin douillet et Rose de minuit (essaie-les dans Thème, plus bas)
+74|Packs de stickers et de tampons en plus (Botanique, Jour de marché, Saison douillette)
+75|Plus de pinceaux et de papiers : lavis aquarelle, craie grasse, kraft, quadrillé et pointillé
+76|Affiche bilan de l'année avec tes dessins (dans l'onglet Année)
+77|Restaurer l'achat
+78|Installe-la sur ton téléphone ou ta tablette
+79|Sur iPhone ou iPad : ouvre cette page dans Safari, touche Partager, puis « Sur l'écran d'accueil ». Sur Android : touche le menu du navigateur, puis « Installer l'application » ou « Ajouter à l'écran d'accueil ».
+80|Installer Doodle Days
+81|Langue
+82|Thème
+83|Couleur principale
+84|Clair ou sombre
+85|Comme l'appareil
+86|Clair
+87|Sombre
+88|La semaine commence le
+89|Lundi
+90|Dimanche
+91|Sensations
+92|Sons
+93|Vibrations
+94|Petits encouragements pendant le dessin
+95|Rappels
+96|Doodle Days affiche les rappels quand elle est ouverte. Pour en recevoir appli fermée, ouvre un projet et touche « Ajouter à l'agenda du téléphone ».
+97|Autoriser les notifications
+98|Verrouillage
+99|Verrouiller Doodle Days avec un code PIN
+100|Déverrouiller par empreinte ou visage
+101|Changer le code PIN
+102|Le verrouillage empêche les autres d'ouvrir l'appli sur cet appareil. Elle se reverrouille après une minute d'absence.
+103|Sauvegarde
+104|Tes entrées sont enregistrées sur cet appareil. En attendant la connexion avec Google, enregistre de temps en temps un fichier de sauvegarde, par exemple sur iCloud Drive ou Google Drive, et utilise-le pour passer à un nouveau téléphone.
+105|Enregistrer une sauvegarde
+106|Restaurer une sauvegarde
+107|Me rappeler de sauvegarder chaque semaine
+108|Supprimés récemment
+109|Les projets, photos, activités et dessins supprimés restent ici pendant 30 jours.
+110|Aide et avis
+111|Comment ça marche
+112|Revoir la visite guidée
+113|Envoyer un avis
+114|Noter Doodle Days
+115|Données
+116|Charger des exemples
+117|Tout supprimer
+118|Photo
+119|Supprimer la photo
+120|Fermer
+121|Nom
+122|Poterie, commandes, un croquis par jour
+123|Couleur
+124|Objectif mensuel en jours (facultatif)
+125|Les séries pardonnent un jour manqué par semaine : une journée chargée ne les cassera pas.
+126|Enregistrer
+127|Mois précédent
+128|Enregistrer en image
+129|Vider maintenant
+130|Toujours bloqué·e ? Envoie un avis
+131|Idées, problèmes ou choses que tu adores. Chaque message est lu.
+132|Type d'avis
+133|Ton message
+134|Dis-nous ce que tu en penses
+135|Envoyer
+136|Passer
+137|Impossible d'enregistrer sur cet appareil. Le stockage est peut-être plein ou bloqué.
+138|Enregistré sur cet appareil.
+139|Tout s'enregistre automatiquement sur cet appareil.
+140|Annuler
+141|Restauré.
+142|Projet
+143|Activité
+144|{what} · supprimé {when}
+145|Restaurer
+146|Rien ici. Ce que tu supprimes reste ici pendant 30 jours.
+147|Ouvrir les supprimés récents ({n})
+148|Ouvrir les supprimés récents
+149|tous les jours
+150|toutes les semaines
+151|tous les mois
+152|tous les ans
+153|à l'heure prévue
+154|{n}/{goal} ce mois-ci
+155|{n} ce mois-ci
+156|{n} avant LV {l}
+157|Niveau {l}
+158|Activités · {month}
+159|Suis ce que tu crées. Touche « + Nouvelle activité » et ajoutes-en une, comme « Peinture » ou « Commandes boutique ».
+160|Fait aujourd'hui
+161|Série à l'abri aujourd'hui
+162|Série lancée
+163|Coche aujourd'hui pour continuer
+164|Lance une série aujourd'hui
+165|Modifier {name}
+166|Modifier
+167|Toute la journée
+168|Ouvrir {day}
+169|Dessin du {day}
+170|Modifier l'activité
+171|Ton mois de {month}
+172|Dessin du {date}
+173|Pas encore de dessin ce mois-ci. Chaque jour où tu dessines apparaîtra ici.
+174|meilleure série {n}
+175|Objectif atteint
+176|Mon mois de {month}
+177|Un mois de création.
+178|fait avec Doodle Days
+179|Une journée de création
+180|Image enregistrée.
+181|Afficher : toutes les entrées
+182|Afficher : {name}
+183|Aucun résultat. Essaie un autre mot.
+184|À venir
+185|Passés
+186|À venir (60 prochains jours)
+187|Pas encore de projet. Touche « + Nouveau projet » pour ajouter un cours, un marché ou une échéance.
+188|Entrées récentes
+189|Tes dessins et notes apparaîtront ici.
+190|Demain
+191|Hier
+192|Couleur d'encre
+193|Petit
+194|Moyen
+195|Grand
+196|Effacer
+197|Effacer ?
+198|Ignorer doigts et paume en dessinant
+199|Stylet seul : ta paume et tes doigts ne dessineront pas.
+200|Les doigts peuvent à nouveau dessiner.
+201|Stylet seul
+202|Dessin effacé
+203|Stickers
+204|Utiliser le sticker {name}
+205|Touche la page pour le placer.
+206|Tous les stickers
+207|Plus
+208|Sticker {name}
+209|Supporter
+210|Le pack {pack} est inclus avec Supporter.
+211|Touche la page pour le placer. Les boutons de taille changent sa taille.
+212|{pack} : {count}, inclus dans le déblocage Supporter unique.
+213|Voir Supporter
+214|une page toute neuve
+215|oh, jolie couleur
+216|Aucun projet ce jour-là.
+217|Ajoute des activités sous le calendrier du mois, puis coche-les ici.
+218|Ajouter une photo
+219|Impossible d'ajouter cette photo. Essaie un JPG ou un PNG.
+220|Ouvrir la photo
+221|Supprimer ?
+222|Photo du {date}
+223|Photo supprimée
+224|Modifier le projet
+225|Astuce : autorise les notifications dans Réglages pour voir les rappels.
+226|Projet mis à jour
+227|Projet enregistré
+228|Supprimer toutes les répétitions ?
+229|Projet supprimé
+230|Fichier d'agenda créé. Ouvre-le pour ajouter le projet à l'agenda de ton téléphone.
+231|aujourd'hui
+232|demain
+233|Sauvegarde Doodle Days
+234|Sauvegarde prête. Range-la en lieu sûr, comme sur iCloud Drive ou Google Drive.
+235|Sauvegarde enregistrée. Garde-la en lieu sûr, comme sur iCloud Drive ou Google Drive.
+236|Les avis ne sont pas encore disponibles. Réessaie dans une prochaine version.
+237|Merci ! Ton appli de mail devrait s'ouvrir avec le message prêt à envoyer.
+238|Marché artisanal
+239|Cours de poterie
+240|Commandes boutique
+241|Commencer à dessiner
+242|Suivant
+243|Effacer le chiffre
+244|Choisis un code PIN à 4 chiffres
+245|Saisis-le à nouveau pour confirmer
+246|Saisis ton code PIN actuel
+247|Code PIN incorrect. Réessaie.
+248|Les codes PIN ne correspondent pas. Réessaie.
+249|Code PIN enregistré. Doodle Days sera verrouillée à l'ouverture.
+250|Déverrouillage par empreinte ou visage activé.
+251|Impossible d'activer le déverrouillage par empreinte ou visage sur cet appareil.
+252|Touche encore pour tout effacer
+253|Verrouillage par code PIN désactivé.
+254|Automatique (langue de l'appareil)
+255|Doodle Days v{v} · Fonctionne hors ligne · Sans pub
+256|Ce navigateur ne prend pas en charge les notifications.
+257|Les notifications sont activées.
+258|Les notifications sont bloquées dans les réglages du navigateur.
+259|{mb} Mo utilisés sur cet appareil.
+260|Touche encore pour vider
+261|Aperçu de {name}. Ce thème est inclus avec Supporter, il sera réinitialisé à la réouverture de l'appli.
+262|Selon le thème
+263|{name} a son propre style, le mode clair ou sombre ne s'applique pas.
+264|Sauvegarde restaurée.
+265|Ce fichier n'est pas une sauvegarde Doodle Days.
+266|Exemples ajoutés.
+267|Touche encore pour tout supprimer
+268|Tout a été supprimé.
+269|Essai de ciels mouillé sur mouillé. Encore trop d'eau !
+270|Monté les mailles de l'écharpe moutarde
+271|Deux commandes de tirages expédiées
+272|Pivoines du marché, étude de 20 min
+273|Écharpe : 40 cm faits
+274|Test d'émail pour les tasses
+275|Réassort de stickers
+276|Marché artisanal sur la place
+277|Photos des annonces Etsy
+278|Exemples effacés. On a gardé les activités que tu as utilisées : {list}.
+279|Exemples effacés. Le calendrier est tout à toi.
+280|Activité mise à jour
+281|« {name} » ajouté
+282|Supprimer l'activité ?
+283|« {name} » supprimé
+284|Supporter est déjà débloqué. Merci !
+285|Aucun achat Supporter trouvé sur ce compte Google.
+286|Impossible de joindre Google Play. Vérifie ta connexion et réessaie.
+287|Supporter débloqué. Merci de soutenir Doodle Days !
+288|Supporter sera disponible dans l'appli Doodle Days sur Google Play.
+289|L'achat n'a pas abouti et tu n'as pas été débité·e.
+290|Supporter débloqué
+291|Merci de soutenir Doodle Days.
+292|Débloquer Supporter · {price}
+293|Débloquer Supporter
+294|Achat unique. Sans abonnement.
+295|Disponible dans l'appli Doodle Days sur Google Play.
+296|touche pour passer
+297|Encore debout ?
+298|Bonjour
+299|Bon après-midi
+300|Bonsoir
+301|{hi} ! Touche un jour pour commencer à dessiner
+302|Ce navigateur ne laisse pas Doodle Days enregistrer. Tes entrées seront perdues à la fermeture.
+303|Stylo
+304|Feutre
+305|Gomme
+306|Débutant
+307|Botanique
+308|Jour de marché
+309|Saison douillette
+310|Bonbon pop
+311|Quête pixel
+312|Classique
+313|Scrapbook
+314|Jardin douillet
+315|Idée
+316|Problème
+317|Un truc que j'adore
+318|joli trait
+319|trop joli
+320|petit chef-d'œuvre
+321|j'adore
+322|continue comme ça
+323|oh, oui
+324|c'est ça !
+325|de l'art !
+326|super !
+327|trop mignon !
+328|pile au bon endroit
+329|ooh
+330|une page toute neuve t'attend
+331|salut, l'artiste
+332|un petit dessin par jour
+333|ton calendrier carnet de croquis
+334|Aquarelle
+335|Tricot
+336|Un croquis par jour
+337|Comment ajouter un sticker ?
+338|Ouvre un jour et touche un sticker dans la rangée sous la page, ou touche « Stickers » pour voir tout le plateau. Puis touche la page là où tu le veux.
+339|Comment marchent les séries ?
+340|Coche une activité sur un jour pour la compter. Ta série, c'est le nombre de jours d'affilée où tu l'as cochée. Chaque semaine, un jour manqué est pardonné : une seule journée chargée ne la cassera pas.
+341|Où sont enregistrées mes entrées ?
+342|Sur cet appareil, jamais sur nos serveurs. Quand la connexion avec Google arrivera, tu pourras synchroniser une copie via ton propre Google Drive. Enregistre une sauvegarde de temps en temps pour ne rien perdre.
+343|Comment passer à un nouveau téléphone ?
+344|Dans Réglages, touche « Enregistrer une sauvegarde » et garde-la en lieu sûr, comme sur iCloud Drive ou Google Drive. Sur le nouveau téléphone, installe Doodle Days et touche « Restaurer une sauvegarde ».
+345|Pourquoi les rappels ne s'affichent pas quand l'appli est fermée ?
+346|L'appli ne peut afficher des rappels que lorsqu'elle est ouverte. Ouvre un projet et touche « Ajouter à l'agenda du téléphone » pour recevoir les rappels de l'agenda de ton téléphone.
+347|Je peux dessiner avec un stylet ?
+348|Oui. Le trait s'épaissit quand tu appuies plus fort, et un bouton « Stylet seul » apparaît pour que ta paume ne dessine pas.
+349|J'ai supprimé quelque chose par erreur.
+350|Va dans Réglages, puis « Supprimés récemment ». Les projets, photos, activités et dessins y restent pendant 30 jours.
+351|Que comprend Supporter ?
+352|Trois thèmes en plus, plus de polices, des finitions de stickers, trois packs de stickers et les futurs bonus, pour un prix unique. Tout le reste de Doodle Days reste gratuit.
+353|Le verrouillage par code PIN est-il sûr ?
+354|Le code PIN empêche les autres d'ouvrir l'appli sur ton appareil. Il ne chiffre pas tes entrées, alors garde aussi le verrouillage d'écran de ton appareil activé.
+355|Comment changer la langue ?
+356|Va dans Réglages, puis Langue.
+357|Dessine n'importe quel jour
+358|Touche un jour, puis dessine, ajoute des stickers et des photos ou écris une note. Tout s'enregistre tout seul.
+359|Crée des séries
+360|Ajoute des activités pour ce que tu crées et touche « Fait aujourd'hui » pour faire grandir ta série. Un jour manqué par semaine est pardonné.
+361|Planifie tes créations
+362|Ajoute cours, marchés et échéances avec des rappels. Tu les retrouveras tous dans Projets.
+363|Fais-la à ton image
+364|Choisis un thème et une couleur dans Réglages, et revois chaque fin de mois avec « Ton mois ».
+365|Rechercher
+366|Chercher dans les notes, projets et activités
+367|Fermer la recherche
+368|Résultat précédent
+369|Résultat suivant
+370|Voir la liste
+371|Masquer la liste
+372|Aucun jour trouvé. Essaie un autre mot.
+373|Plus de polices pour les titres et le texte (essaie-les dans Polices, plus bas)
+374|Polices
+375|Titres
+376|Texte
+377|Compte et synchronisation
+378|La connexion est facultative. Elle te permettra de synchroniser tes entrées entre tes appareils via ton propre Google Drive, dans un dossier privé que seul Doodle Days peut ouvrir. Nous ne recevons jamais de copie.
+379|Se connecter avec Google
+380|Bientôt
+381|Rose de minuit
+382|Couleur du jour
+383|Aucune couleur
+384|Nomme cette couleur, comme « Jour de repos »
+385|magnifique
+386|quelle ambiance
+387|à encadrer
+388|un pur délice
+389|tu gères !
+390|pure magie
+391|comme dans un rêve
+392|tellement toi
+393|petite pépite
+394|waouh !
+395|je fonds
+396|jolie petite ligne
+397|digne d'un musée
+398|la magie opère
+399|bravo !
+400|sublime
+401|plein de charme
+402|c'est toi qui l'as fait !
+403|Finition des stickers
+404|Sticker vinyle
+405|Peint à la main
+406|Papier découpé
+407|Pin's émaillé
+408|Finitions de stickers : peint à la main, papier découpé et pin's émaillé (choisis-en une dans le plateau de stickers)
+409|Existe-t-il des raccourcis pour dessiner ?
+410|Touche la page avec deux doigts pour annuler et avec trois doigts pour rétablir. Tu peux aussi balayer vers la gauche ou la droite avec trois doigts. Au clavier, utilise Ctrl+Z ou ⌘Z.
+411|Craie grasse
+412|{name} est inclus avec Supporter.
+413|Uni
+414|Kraft
+415|Quadrillé
+416|Pointillé
+417|Papier
+418|Affiche de l'année
+419|Mon {y} en dessins
+420|Une année de création.
+421|Plus longue série
+422|Activité phare
+423|Création de ton affiche…
+424|Filtres
+425|Afficher
+426|Quand
+427|N'importe quand
+428|Passés
+429|7 derniers jours
+430|30 derniers jours
+431|Ce mois-ci
+432|Cette année
+433|Dates perso
+434|Du
+435|Au
+436|Réinitialiser les filtres
+437|Notes
+438|Activités
+439|Couleurs du jour
+440|Toutes les activités
+441|Jours récents
+442|Nouvelle note
+443|Titre
+444|Écris quelque chose…
+445|Zone de dessin de cette note
+446|Archiver
+447|Désarchiver
+448|OK
+449|Archivées
+450|Retour aux notes
+451|Archivées ({n})
+452|Note sans titre
+453|Modifiée {when}
+454|Aucune note archivée.
+455|Pas encore de notes. Touche « + Nouvelle note » pour noter des idées, des listes ou des croquis.
+456|Note archivée
+457|Note remise dans Notes
+458|Touche à nouveau pour supprimer
+459|Protège tes entrées sur iPhone.
+460|Safari peut effacer les données du site si tu n'y vas pas pendant 7 jours. Ajoute Doodle Days à ton écran d'accueil : touche Partager, puis « Sur l'écran d'accueil ». Tu as déjà des entrées ici ? Enregistre d'abord une sauvegarde, puis restaure-la dans l'appli de l'écran d'accueil.
+461|Sauvegarder
+462|Pourquoi mes entrées ont disparu sur iPhone ?
+463|Quand Doodle Days est utilisée dans Safari, l'iPhone peut effacer ses données si tu ne l'ouvres pas pendant 7 jours. Safari et l'appli de l'écran d'accueil gardent aussi des copies séparées. Ajoute Doodle Days à ton écran d'accueil et enregistre de temps en temps un fichier de sauvegarde : tes entrées resteront en sécurité.
+464|Mise en forme
+465|Mode
+466|Écrire
+467|Dessiner
+468|Titre
+469|Sous-titre
+470|Gras
+471|Italique
+472|Souligné
+473|Barré
+474|Liste à puces
+475|Liste numérotée
+476|Liste de tâches
+477|Comment mettre en forme mes notes ?
+478|Utilise les boutons au-dessus de la note pour les titres, le gras, les listes et les listes de tâches. Tu peux aussi commencer une ligne par #, -, 1. ou [] suivi d'un espace. Sur la page Notes, passe d'Écrire à Dessiner pour écrire et dessiner sur la même page.
+479|Cocher aujourd'hui
+480|Retour
+481|Étape {n} sur {total}
+482|Bienvenue dans Doodle Days
+483|Un calendrier dans lequel tu peux dessiner. Faisons un petit tour. D'abord, choisis le style qui te plaît. Tu peux le changer à tout moment dans Réglages.
+484|Chaque jour est une page
+485|Touche un jour pour l’ouvrir. Les jours avec des dessins affichent une miniature, et de petites icônes montrent tes activités et tes projets. La ligne sous le calendrier indique qui est qui.
+486|Dessine directement sur la page
+487|Utilise ton doigt ou un stylet. Touche avec deux doigts pour annuler, ou trois pour rétablir.
+488|Stylos, couleurs et stickers
+489|Choisis une couleur et une taille, puis un stylo ou un feutre. Dans Stickers, tu trouveras tous les packs de stickers et les finitions.
+490|Écris une note
+491|Ajoute des titres, des listes et des listes de tâches avec les boutons au-dessus de la note.
+492|Coche les activités que tu as faites aujourd'hui, ou ajoutes-en une nouvelle ici.
+493|Colorie un jour
+494|Donne une couleur et un nom à un jour, comme vert pour « Jour de repos ».
+495|Crée de petites séries
+496|Chaque activité a sa série. Touche « Cocher aujourd’hui » pour la faire grandir. Un jour manqué par semaine est pardonné. Touche Modifier pour donner à une activité sa propre icône.
+497|Retrouve tout
+498|Cherche dans les notes, projets et activités. Utilise le bouton de filtre pour choisir des dates et des types.
+499|Tes vues
+500|Passe de Mois à Semaine ou Année, garde un bloc-notes dans Notes et vois ce qui arrive dans Projets.
+501|Thèmes, polices, langue, verrouillage et sauvegardes : tout est dans Réglages.
+502|C'est parti !
+503|Commence par la page d'aujourd'hui. Bons dessins !
+504|Bilan du mois
+505|Bilan de l'année
+P|nDays|{n} jour|{n} jours
+P|streakLbl|jour de série|jours de série
+P|streakToast|Série {name} : {n} jour !|Série {name} : {n} jours !
+P|greetStreak|{hi} ! Série {name} : {n} jour 🔥|{hi} ! Série {name} : {n} jours 🔥
+P|goalToast|Objectif atteint : {n} jour de {name} ce mois-ci !|Objectif atteint : {n} jours de {name} ce mois-ci !
+P|nResults|{n} résultat|{n} résultats
+P|nPlans|{n} projet|{n} projets
+P|daysMakingLbl|jour de création|jours de création
+P|doodlesLbl|dessin|dessins
+P|photosLbl|photo|photos
+P|plansLbl|projet|projets
+P|nOfGoalDays|{n} jour sur {goal}|{n} jours sur {goal}
+P|nDaysMaking|{n} jour de création|{n} jours de création
+P|nDoodles|{n} dessin|{n} dessins
+P|yearAll|{n} jour avec une entrée en {y}|{n} jours avec une entrée en {y}
+P|yearOne|{n} jour de {name} en {y}|{n} jours de {name} en {y}
+P|revealReady|Ton mois de {month} est prêt : {n} jour de création. Jette un œil !|Ton mois de {month} est prêt : {n} jours de création. Jette un œil !
+P|nStickers|{n} sticker|{n} stickers
+P|nMatchDays|{n} jour trouvé|{n} jours trouvés
+P|nNoteResults|{n} note|{n} notes
+
+506|Partager mon calendrier
+507|Choisir les dates
+508|Inclure
+509|Dessins
+510|Envoyer en
+511|Image
+512|Pour les discussions et les réseaux sociaux
+513|Ajouter les projets à leur agenda
+514|S’ouvre dans Google Agenda ou Calendrier Apple
+515|Lien en direct
+516|Toujours à jour, en lecture seule. Arrive avec la synchronisation.
+517|Aperçu
+518|Partager
+519|Dates
+520|Mon calendrier
+521|{range} : {plans}. La personne qui ouvre le fichier peut les ajouter à son agenda.
+522|Aucun projet à ces dates.
+523|Fichier d’agenda enregistré. Envoie-le à qui tu veux : en l’ouvrant, les projets s’ajoutent à son agenda.
+
+524|Icône
+525|Gérer l’abonnement
+526|L’appli reste gratuite. Supporter ajoute des extras et la fait vivre :
+527|Packs d’icônes pour les activités et les projets : Atelier, Quotidien et Boutique
+528|Packs d’icônes
+529|Sans icône
+530|{pack} : {count}, inclus dans Supporter.
+531|Trois thèmes en plus, plus de polices, des finitions de stickers, trois packs de stickers, des packs d’icônes et les extras à venir. Paie au mois, à l’année ou une fois pour toujours. Tout le reste de Doodle Days reste gratuit.
+532|Mensuel
+533|Annuel
+534|À vie
+535|{price} / mois
+536|{price} / an
+537|{price} une fois
+538|Offre de lancement : {price} la première année
+539|Les abonnements se renouvellent jusqu’à ce que tu les annules dans Google Play.
+540|Ton abonnement Supporter est terminé, donc les extras sont désactivés. Toutes tes entrées sont toujours là.
+541|Pinceau
+542|Crayon
+543|Pelote
+544|Couture
+545|Appareil photo
+546|Livre
+547|Étoile
+548|Cœur
+549|Palette
+550|Ciseaux
+551|Règle
+552|Plume
+553|Poterie
+554|Cadre
+555|Bobine
+556|Étincelles
+557|Café
+558|Plante
+559|Musique
+560|Sport
+561|Lune
+562|Soleil
+563|Maison
+564|Discussion
+565|Colis
+566|Étiquette
+567|Panier
+568|Argent
+569|Livraison
+570|Courrier
+571|Vitrine
+572|Promo
+573|Atelier
+574|Quotidien
+575|Boutique
+
+576|Partage ton calendrier
+577|Envoie une image de ton mois ou de ta semaine, ou envoie tes projets pour que tes amis les ajoutent à leur agenda.
+578|Seulement {price} par mois, {pct} % de réduction
+579|Tout ce que nous ajouterons plus tard, comme des thèmes, des stickers, des packs d’icônes et plus, sans frais en plus
+580|Tous les extras à venir inclus
