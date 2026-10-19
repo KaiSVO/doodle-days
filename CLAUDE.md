@@ -7,7 +7,7 @@ A free calendar you can draw in, for artists and crafters. Single-file PWA, live
 - `dev/` = source and tools (excluded from Vercel by `.vercelignore`):
   - `src.html`: the app source (HTML + CSS + JS in one file).
   - `sticker_styles.js` (sticker finishes) and `icons.py` → `icons.js` (activity/plan icon set) are injected by `build.py`.
-  - `i18n_keys.json` (`s`: index-aligned English strings, `p`: plurals) + `i18n/<lang>.txt` (`index|text`, `P|key|forms`) for uk, es, pt, de, fr, pl. `i18n_build.py` injects them into `src.html` between `/*__I18N__*/` and `/*__END__*/`.
+  - `i18n_keys.json` (`s`: index-aligned English strings, `p`: plurals) + `i18n/<lang>.txt` (`index|text`, `P|key|forms`) for uk, ru, es, pt, de, fr, pl. `i18n_build.py` injects them into `src.html` between `/*__I18N__*/` and `/*__END__*/`.
   - `t*.py`: Playwright checks (serve the built page on localhost:8765; `fontroute.py` serves Google Fonts from a local copy).
   - `store/`: Play Store listing text, screenshots, feature graphic.
 
@@ -19,9 +19,9 @@ python3 i18n_build.py       # must print "bad 0"
 python3 build.py            # writes dev/dist/index.html
 cp dist/index.html ../index.html
 ```
-Then bump `APP_VERSION` in `src.html` (currently 3.9.2) and the cache name in `../sw.js` (currently `doodle-days-v34`) every release, or phones keep the old version.
-New UI text: add the English string to `src.html` (wrapped in `tx('…')` for JS), append it to `i18n_keys.json` `s`, and add `index|translation` lines to all six `i18n/*.txt`. Ukrainian uses the polite "ви"; es/pt/de/fr/pl use informal you. Literal string edits: the I18N JSON inside src.html also contains English keys, so anchor replacements on code, not on bare strings.
-Checks worth running after UI changes: `t42.py` (overlap/clipping sweep, 7 languages, phone + desktop), `t45.py` (contrast in every theme/accent), `t41.py` (saved month/year/day images), `t44.py` (icons + Supporter billing with a mocked Play), `t43.py` (share calendar), `t37.py` (guided tour).
+Then bump `APP_VERSION` in `src.html` (currently 3.9.3) and the cache name in `../sw.js` (currently `doodle-days-v35`) every release, or phones keep the old version.
+New UI text: add the English string to `src.html` (wrapped in `tx('…')` for JS), append it to `i18n_keys.json` `s`, and add `index|translation` lines to all seven `i18n/*.txt`. Ukrainian uses the polite "ви", Russian the polite "вы"; es/pt/de/fr/pl use informal you. Literal string edits: the I18N JSON inside src.html also contains English keys, so anchor replacements on code, not on bare strings.
+Checks worth running after UI changes: `t42.py` (overlap/clipping sweep, 8 languages, phone + desktop), `t45.py` (contrast in every theme/accent), `t41.py` (saved month/year/day images), `t44.py` (icons + Supporter billing with a mocked Play), `t43.py` (share calendar), `t37.py` (guided tour).
 
 ## Product decisions (keep)
 - Everything stays on the device (IndexedDB); no analytics, no server. Privacy policy says so.

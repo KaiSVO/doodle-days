@@ -2,7 +2,7 @@ import json,re,sys
 K=json.load(open('i18n_keys.json')); S=K['s']; P=K['p']
 ph=lambda t:sorted(re.findall(r'\{\w+\}',t))
 out={}; bad=0
-for lang in ['uk','es','pt','de','fr','pl']:
+for lang in ['uk','ru','es','pt','de','fr','pl']:
     s={}; p={}
     for ln in open(f'i18n/{lang}.txt',encoding='utf-8'):
         ln=ln.rstrip('\n')

@@ -29,6 +29,6 @@ async def run(p,loc,code):
     await b.close()
 async def main():
     async with async_playwright() as p:
-        for loc,code in [('en-GB','en'),('uk-UA','uk'),('es-ES','es'),('pt-BR','pt'),('de-DE','de'),('fr-FR','fr'),('pl-PL','pl')]:
+        for loc,code in [('en-GB','en'),('uk-UA','uk'),('ru-RU','ru'),('es-ES','es'),('pt-BR','pt'),('de-DE','de'),('fr-FR','fr'),('pl-PL','pl')]:
             await run(p,loc,code)
 asyncio.run(main())

@@ -2,7 +2,7 @@
 import asyncio,json
 from playwright.async_api import async_playwright
 from fontroute import setup
-LOCS=[('en-GB','en'),('uk-UA','uk'),('es-ES','es'),('pt-BR','pt'),('de-DE','de'),('fr-FR','fr'),('pl-PL','pl')]
+LOCS=[('en-GB','en'),('uk-UA','uk'),('ru-RU','ru'),('es-ES','es'),('pt-BR','pt'),('de-DE','de'),('fr-FR','fr'),('pl-PL','pl')]
 SIZES=[(390,844),(1280,900)]
 DETECT=r"""(name)=>{
  const vis=e=>{const r=e.getBoundingClientRect(),c=getComputedStyle(e);return r.width>0&&r.height>0&&c.visibility!=='hidden'&&+c.opacity>0.05};
