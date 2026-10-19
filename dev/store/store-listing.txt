@@ -12,17 +12,19 @@ Doodle Days is a calendar you can draw in. Every day gets its own little page fo
 DRAW ON EVERY DAY
 • Doodle with pen, marker and eraser. Lines get thicker when you press harder with a stylus.
 • Add stickers from the sticker tray, or tap a recent one.
-• Undo and redo with a two- or three-finger tap.
+• Undo with a two-finger tap, redo with three.
+• Notes tab: a notepad where you can type and doodle on the same page, with headings, lists and checklists.
 
 PLAN YOUR MAKING
 • Add plans for classes, markets, fairs and deadlines, with repeats and reminders.
 • Month, week and year views.
 • Colour a day to mark it, like green for a day off.
 • Search finds notes, plans and activities, and matching days glow on the calendar.
+• Share my calendar: send a picture of your month or week, or send your plans so friends can add them to their own calendar.
 
 BUILD LITTLE STREAKS
 • Track the things you make, like painting, knitting or shop orders.
-• Tick "Done today" to grow a streak. One missed day a week is forgiven.
+• Give each activity a colour and a little icon, then tap "Mark today done" to grow a streak. One missed day a week is forgiven.
 • Set a monthly goal and see how close you are.
 • At the end of each month, get a look back at everything you made.
 
@@ -37,7 +39,7 @@ PRIVATE BY DESIGN
 • Save a backup file to move to a new phone.
 • Deleted something by mistake? It stays in Recently deleted for 30 days.
 
-SUPPORTER (ONE-TIME, OPTIONAL)
+SUPPORTER (OPTIONAL)
 Doodle Days is free. Supporter keeps it going and adds extras:
 • Three extra themes: Scrapbook, Cosy garden and Midnight rose
 • More fonts for headings and text
@@ -51,8 +53,8 @@ Doodle Days is free. Supporter keeps it going and adds extras:
 Supporter is $0.99 a month, $5.99 a year (just 50¢ a month, half price), or $21.99 once for life.
 
 ---
-Category: Productivity (or Art & Design)
-Tags to pick in Play Console: Calendar, Journal, Drawing
+Category: Productivity
+Tags to pick in Play Console: Calendar, Journal, Drawing, Planner, Habit tracker (closest available)
 Contact email: sidelock24@gmail.com
 Privacy policy URL: https://doodle-days.vercel.app/privacy.html
 Content rating: answer the questionnaire; no violence, no user chat, no ads → expected rating "Everyone" / PEGI 3
