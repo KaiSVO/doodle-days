@@ -1,8 +1,15 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "io.github.kaisvo.doodledays",
-        "sha256_cert_fingerprints": ["92:A9:E3:DB:80:A3:77:AB:2D:FF:67:59:44:9A:C8:DE:88:2B:B5:D5:B8:A5:0E:13:B5:1D:F9:95:26:8A:32:8E"]
-      }
-    }]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.kaisvo.doodledays",
+      "sha256_cert_fingerprints": [
+        "92:A9:E3:DB:80:A3:77:AB:2D:FF:67:59:44:9A:C8:DE:88:2B:B5:D5:B8:A5:0E:13:B5:1D:F9:95:26:8A:32:8E",
+        "C5:0E:93:BF:39:4F:BE:96:13:07:10:C8:99:CA:BE:F5:3A:5B:87:0E:D6:89:94:58:D0:FB:60:32:CD:3D:77:F4"
+      ]
+    }
+  }
+]
