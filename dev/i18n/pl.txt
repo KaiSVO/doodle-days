@@ -72,8 +72,8 @@
 71|Doodle Days Supporter
 72|Aplikacja pozostaje darmowa. Jednorazowe odblokowanie Supporter dodaje dodatki i pomaga ją rozwijać:
 73|Trzy dodatkowe motywy: Scrapbook, Przytulny ogród i Północna róża (wypróbuj je niżej w sekcji Motyw)
-74|Dodatkowe paczki naklejek i stempli (Botaniczna, Dzień targowy, Przytulna pora)
-75|Więcej pędzli i rodzajów papieru: akwarela, kredka świecowa, papier pakowy, kratka i kropki
+74|Dodatkowe paczki naklejek i stempli (Botaniczna, Dzień targowy, Przytulna pora, Straszny sezon)
+75|Więcej pędzli i rodzajów papieru: akwarela, kredka świecowa, papier pakowy, kratka, kropki i Halloween
 76|Plakat podsumowujący rok z Twoich rysunków (w zakładce Rok)
 77|Przywróć zakup
 78|Zainstaluj na telefonie lub tablecie
@@ -209,7 +209,7 @@
 208|Naklejka {name}
 209|Supporter
 210|Paczka {pack} jest w pakiecie Supporter.
-211|Stuknij stronę, żeby ją umieścić. Przyciski rozmiaru zmieniają jej wielkość.
+211|Dotknij strony, aby ją umieścić, a potem przeciągnij. Zsuń lub rozsuń palce albo użyj uchwytu w rogu, aby zmienić rozmiar i obrócić. Dotknij ✓, gdy wygląda dobrze.
 212|{pack}: {count}, w ramach jednorazowego odblokowania Supporter.
 213|Zobacz Supporter
 214|świeża strona
@@ -350,7 +350,7 @@
 349|Coś zostało usunięte przez pomyłkę.
 350|Wejdź w Ustawienia, a potem „Ostatnio usunięte”. Plany, zdjęcia, aktywności i rysunki czekają tam przez 30 dni.
 351|Co zawiera Supporter?
-352|Trzy dodatkowe motywy, więcej czcionek, wykończenia naklejek, trzy paczki naklejek i przyszłe dodatki za jednorazową opłatą. Cała reszta Doodle Days pozostaje darmowa.
+352|Trzy dodatkowe motywy, więcej czcionek, wykończenia naklejek, cztery paczki naklejek i przyszłe dodatki za jednorazową opłatą. Cała reszta Doodle Days pozostaje darmowa.
 353|Jak bezpieczna jest blokada PIN?
 354|PIN nie pozwala innym otworzyć aplikacji na Twoim urządzeniu. Nie szyfruje jednak wpisów, więc miej też włączoną blokadę ekranu urządzenia.
 355|Jak zmienić język?
@@ -551,7 +551,7 @@ P|nNoteResults|{n} notatka|{n} notatki|{n} notatek|{n} notatki
 528|Paczki ikon
 529|Bez ikony
 530|{pack}: {count}, w ramach Supportera.
-531|Trzy dodatkowe motywy, więcej czcionek, wykończenia naklejek, trzy paczki naklejek, paczki ikon i przyszłe dodatki. Płać co miesiąc, co rok albo raz na zawsze. Cała reszta Doodle Days pozostaje darmowa.
+531|Trzy dodatkowe motywy, więcej czcionek, wykończenia naklejek, cztery paczki naklejek, paczki ikon i przyszłe dodatki. Płać co miesiąc, co rok albo raz na zawsze. Cała reszta Doodle Days pozostaje darmowa.
 532|Miesięcznie
 533|Rocznie
 534|Na zawsze
@@ -602,3 +602,8 @@ P|nNoteResults|{n} notatka|{n} notatki|{n} notatek|{n} notatki
 578|Tylko {price} miesięcznie, {pct}% taniej
 579|Wszystko, co dodamy później, np. motywy, naklejki, paczki ikon i więcej, bez dodatkowych opłat
 580|Wszystkie przyszłe dodatki w cenie
+581|Usuń naklejkę
+582|Umieść naklejkę
+583|W linie
+584|Halloween
+585|Straszny sezon

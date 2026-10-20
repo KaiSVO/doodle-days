@@ -10,7 +10,7 @@ async def main():
         pg=await c.new_page(); pg.on('pageerror',lambda e:errs.append(str(e)))
         await pg.goto('http://localhost:8765/#supporter-preview'); await skip(pg)
         await pg.click('.day >> nth=12'); await pg.wait_for_timeout(400)
-        await pg.click('.tool:has-text("Stickers")'); await pg.wait_for_timeout(300)
+        await pg.click('#tools [aria-label=Stickers]'); await pg.wait_for_timeout(300)
         await pg.click('#tray .finchip[aria-label="Enamel pin"]'); await pg.wait_for_timeout(400)
         bx=await pg.locator('#pad').bounding_box()
         await pg.tap('#pad',position={'x':bx['width']*.8,'y':bx['height']*.25}); await pg.wait_for_timeout(300)
@@ -21,7 +21,7 @@ async def main():
         # notes stickers
         await pg.click('.tab[data-view=notes]'); await pg.click('#newNote'); await pg.wait_for_timeout(300)
         await pg.fill('#noteTitle','Market stall'); await pg.click('#noteText'); await pg.keyboard.type('Bring the mugs and price tags')
-        await pg.click('#ndDraw'); await pg.click('#noteTools .tool:has-text("Stickers")'); await pg.wait_for_timeout(300)
+        await pg.click('#ndDraw'); await pg.click('#noteTools [aria-label=Stickers]'); await pg.wait_for_timeout(300)
         await pg.click('#noteTray .packtabs .chipbtn >> nth=2'); await pg.wait_for_timeout(200)
         await pg.click('#noteTray .stk >> nth=1'); await pg.wait_for_timeout(200)
         pb=await pg.locator('#ndPage').bounding_box()
@@ -35,7 +35,7 @@ async def main():
         # free user
         c=await b.new_context(viewport={'width':390,'height':844},device_scale_factor=2,locale='en-GB',service_workers='block'); pg=await c.new_page()
         await pg.goto('http://localhost:8765/'); await skip(pg)
-        await pg.click('.day >> nth=12'); await pg.click('.tool:has-text("Stickers")'); await pg.wait_for_timeout(300)
+        await pg.click('.day >> nth=12'); await pg.click('#tools [aria-label=Stickers]'); await pg.wait_for_timeout(300)
         await pg.click('#tray .finchip[aria-label="Paper cut-out"]'); await pg.wait_for_timeout(300)
         print('free toast:',await pg.text_content('#toast'))
         await b.close()

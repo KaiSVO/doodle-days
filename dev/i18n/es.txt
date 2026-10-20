@@ -72,8 +72,8 @@
 71|Doodle Days Supporter
 72|La app sigue siendo gratis. Un desbloqueo único de Supporter añade extras y ayuda a mantenerla:
 73|Tres temas extra: Scrapbook, Jardín acogedor y Rosa de medianoche (pruébalos en Tema, más abajo)
-74|Packs extra de pegatinas y sellos (Botánico, Día de mercado, Temporada acogedora)
-75|Más pinceles y estilos de papel: aguada de acuarela, cera, kraft, cuadrícula y puntos
+74|Packs extra de pegatinas y sellos (Botánico, Día de mercado, Temporada acogedora, Temporada de sustos)
+75|Más pinceles y estilos de papel: aguada de acuarela, cera, kraft, cuadrícula, puntos y Halloween
 76|Póster resumen del año con tus dibujos (en la pestaña Año)
 77|Restaurar compra
 78|Instálala en tu móvil o tableta
@@ -209,7 +209,7 @@
 208|Pegatina {name}
 209|Supporter
 210|El pack {pack} viene con Supporter.
-211|Toca la página para colocarla. Los botones de tamaño cambian lo grande que es.
+211|Toca la página para colocarla y arrástrala para moverla. Pellizca o usa el tirador de la esquina para cambiar el tamaño y girarla. Toca ✓ cuando te guste.
 212|{pack}: {count}, incluidas en el desbloqueo único de Supporter.
 213|Ver Supporter
 214|una página nueva
@@ -350,7 +350,7 @@
 349|¿Borraste algo sin querer?
 350|Ve a Ajustes y luego a «Eliminados recientemente». Los planes, fotos, actividades y dibujos se guardan ahí 30 días.
 351|¿Qué incluye Supporter?
-352|Tres temas extra, más fuentes, acabados de pegatinas, tres paquetes de pegatinas y extras futuros, por un pago único. Todo lo demás en Doodle Days sigue siendo gratis.
+352|Tres temas extra, más fuentes, acabados de pegatinas, cuatro paquetes de pegatinas y extras futuros, por un pago único. Todo lo demás en Doodle Days sigue siendo gratis.
 353|¿Qué tan seguro es el bloqueo con PIN?
 354|El PIN impide que otras personas abran la app en tu dispositivo. No cifra tus entradas, así que mantén también activado el bloqueo de pantalla del dispositivo.
 355|¿Cómo cambio el idioma?
@@ -551,7 +551,7 @@ P|nNoteResults|{n} nota|{n} notas
 528|Packs de iconos
 529|Sin icono
 530|{pack}: {count}, incluido en Supporter.
-531|Tres temas extra, más fuentes, acabados de pegatinas, tres packs de pegatinas, packs de iconos y extras futuros. Paga cada mes, cada año o una sola vez para siempre. Todo lo demás en Doodle Days sigue siendo gratis.
+531|Tres temas extra, más fuentes, acabados de pegatinas, cuatro packs de pegatinas, packs de iconos y extras futuros. Paga cada mes, cada año o una sola vez para siempre. Todo lo demás en Doodle Days sigue siendo gratis.
 532|Mensual
 533|Anual
 534|De por vida
@@ -602,3 +602,8 @@ P|nNoteResults|{n} nota|{n} notas
 578|Solo {price} al mes, {pct} % de descuento
 579|Todo lo nuevo que añadamos más adelante, como temas, pegatinas, packs de iconos y más, sin coste extra
 580|Incluye todos los extras futuros
+581|Quitar pegatina
+582|Colocar pegatina
+583|Rayado
+584|Halloween
+585|Temporada de sustos

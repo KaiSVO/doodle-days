@@ -72,8 +72,8 @@
 71|Doodle Days Supporter
 72|O app continua grátis. Um desbloqueio único do Supporter traz extras e ajuda a manter tudo funcionando:
 73|Três temas extras: Scrapbook, Jardim aconchegante e Rosa da meia-noite (experimente em Tema, abaixo)
-74|Pacotes extras de adesivos e carimbos (Botânico, Dia de feira, Estação aconchegante)
-75|Mais pincéis e estilos de papel: aguada de aquarela, giz de cera, kraft, quadriculado e pontilhado
+74|Pacotes extras de adesivos e carimbos (Botânico, Dia de feira, Estação aconchegante, Temporada assustadora)
+75|Mais pincéis e estilos de papel: aguada de aquarela, giz de cera, kraft, quadriculado, pontilhado e Halloween
 76|Pôster de retrospectiva do ano com seus desenhos (na aba Ano)
 77|Restaurar compra
 78|Instale no seu celular ou tablet
@@ -209,7 +209,7 @@
 208|Adesivo {name}
 209|Supporter
 210|O pacote {pack} vem com o Supporter.
-211|Toque na página para colocá-lo. Os botões de tamanho mudam o tamanho dele.
+211|Toque na página para colocar e arraste para mover. Faça o gesto de pinça ou use a alça do canto para redimensionar e girar. Toque em ✓ quando estiver bom.
 212|{pack}: {count}, parte do desbloqueio único do Supporter.
 213|Ver Supporter
 214|uma página nova
@@ -350,7 +350,7 @@
 349|Excluí algo sem querer.
 350|Vá em Ajustes e depois em “Excluídos recentemente”. Planos, fotos, atividades e desenhos ficam lá por 30 dias.
 351|O que o Supporter inclui?
-352|Três temas extras, mais fontes, acabamentos de adesivos, três pacotes de adesivos e extras futuros, por um pagamento único. Todo o resto do Doodle Days continua grátis.
+352|Três temas extras, mais fontes, acabamentos de adesivos, quatro pacotes de adesivos e extras futuros, por um pagamento único. Todo o resto do Doodle Days continua grátis.
 353|O bloqueio por PIN é seguro?
 354|O PIN impede que outras pessoas abram o app no seu dispositivo. Ele não criptografa seus registros, então mantenha também o bloqueio de tela do dispositivo ativado.
 355|Como mudo o idioma?
@@ -551,7 +551,7 @@ P|nNoteResults|{n} nota|{n} notas
 528|Pacotes de ícones
 529|Sem ícone
 530|{pack}: {count}, incluído no Supporter.
-531|Três temas extras, mais fontes, acabamentos de adesivos, três pacotes de adesivos, pacotes de ícones e extras futuros. Pague por mês, por ano ou uma vez para sempre. Todo o resto do Doodle Days continua grátis.
+531|Três temas extras, mais fontes, acabamentos de adesivos, quatro pacotes de adesivos, pacotes de ícones e extras futuros. Pague por mês, por ano ou uma vez para sempre. Todo o resto do Doodle Days continua grátis.
 532|Mensal
 533|Anual
 534|Vitalício
@@ -602,3 +602,8 @@ P|nNoteResults|{n} nota|{n} notas
 578|Só {price} por mês, {pct}% de desconto
 579|Tudo de novo que adicionarmos depois, como temas, adesivos, pacotes de ícones e mais, sem custo extra
 580|Inclui todos os extras futuros
+581|Remover adesivo
+582|Colocar adesivo
+583|Pautado
+584|Halloween
+585|Temporada assustadora

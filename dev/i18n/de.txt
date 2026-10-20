@@ -72,8 +72,8 @@
 71|Doodle Days Supporter
 72|Die App bleibt kostenlos. Ein einmaliges Supporter-Upgrade bringt Extras und hält die App am Leben:
 73|Drei Extra-Themes: Scrapbook, Gemütlicher Garten und Mitternachtsrose (probier sie unten unter „Theme“ aus)
-74|Extra Sticker- und Stempel-Packs (Botanisch, Markttag, Kuschelzeit)
-75|Mehr Pinsel und Papiere: Aquarell, Wachsmalstift, Kraftpapier, Karo und Punkte
+74|Extra Sticker- und Stempel-Packs (Botanisch, Markttag, Kuschelzeit, Gruselzeit)
+75|Mehr Pinsel und Papiere: Aquarell, Wachsmalstift, Kraftpapier, Karo, Punkte und Halloween
 76|Jahresrückblick-Poster aus deinen Doodles (im Tab „Jahr“)
 77|Kauf wiederherstellen
 78|Auf Handy oder Tablet installieren
@@ -209,7 +209,7 @@
 208|Sticker {name}
 209|Supporter
 210|Das Pack {pack} gibt’s mit Supporter.
-211|Tippe auf die Seite, um ihn zu platzieren. Mit den Größen-Buttons änderst du, wie groß er ist.
+211|Tippe auf die Seite, um ihn zu platzieren, und zieh ihn dann an die richtige Stelle. Mit zwei Fingern oder dem Eckgriff änderst du Größe und Drehung. Tippe auf ✓, wenn es passt.
 212|{pack}: {count}, Teil des einmaligen Supporter-Upgrades.
 213|Supporter ansehen
 214|eine frische Seite
@@ -350,7 +350,7 @@
 349|Ich habe aus Versehen etwas gelöscht.
 350|Geh in die Einstellungen und dann zu „Zuletzt gelöscht“. Pläne, Fotos, Aktivitäten und Doodles bleiben dort 30 Tage lang.
 351|Was ist in Supporter enthalten?
-352|Drei Extra-Themes, mehr Schriften, Sticker-Looks, drei Stickerpacks und künftige Extras, für einen einmaligen Preis. Alles andere in Doodle Days bleibt kostenlos.
+352|Drei Extra-Themes, mehr Schriften, Sticker-Looks, vier Stickerpacks und künftige Extras, für einen einmaligen Preis. Alles andere in Doodle Days bleibt kostenlos.
 353|Wie sicher ist die PIN-Sperre?
 354|Die PIN verhindert, dass andere die App auf deinem Gerät öffnen. Sie verschlüsselt deine Einträge nicht, lass also auch die Bildschirmsperre deines Geräts aktiviert.
 355|Wie ändere ich die Sprache?
@@ -551,7 +551,7 @@ P|nNoteResults|{n} Notiz|{n} Notizen
 528|Symbolpakete
 529|Kein Symbol
 530|{pack}: {count}, Teil von Supporter.
-531|Drei Extra-Themes, mehr Schriften, Sticker-Looks, drei Stickerpakete, Symbolpakete und künftige Extras. Zahl monatlich, jährlich oder einmal für immer. Alles andere in Doodle Days bleibt kostenlos.
+531|Drei Extra-Themes, mehr Schriften, Sticker-Looks, vier Stickerpakete, Symbolpakete und künftige Extras. Zahl monatlich, jährlich oder einmal für immer. Alles andere in Doodle Days bleibt kostenlos.
 532|Monatlich
 533|Jährlich
 534|Für immer
@@ -602,3 +602,8 @@ P|nNoteResults|{n} Notiz|{n} Notizen
 578|Nur {price} im Monat, {pct} % günstiger
 579|Alles, was wir später hinzufügen, wie Themes, Sticker, Symbolpakete und mehr, ohne Aufpreis
 580|Alle künftigen Extras inklusive
+581|Sticker entfernen
+582|Sticker platzieren
+583|Liniert
+584|Halloween
+585|Gruselzeit

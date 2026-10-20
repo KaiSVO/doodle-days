@@ -72,8 +72,8 @@
 71|Doodle Days Supporter
 72|L'appli reste gratuite. Un déblocage Supporter unique ajoute des bonus et l'aide à continuer :
 73|Trois thèmes en plus : Scrapbook, Jardin douillet et Rose de minuit (essaie-les dans Thème, plus bas)
-74|Packs de stickers et de tampons en plus (Botanique, Jour de marché, Saison douillette)
-75|Plus de pinceaux et de papiers : lavis aquarelle, craie grasse, kraft, quadrillé et pointillé
+74|Packs de stickers et de tampons en plus (Botanique, Jour de marché, Saison douillette, Saison frissons)
+75|Plus de pinceaux et de papiers : lavis aquarelle, craie grasse, kraft, quadrillé, pointillé et Halloween
 76|Affiche bilan de l'année avec tes dessins (dans l'onglet Année)
 77|Restaurer l'achat
 78|Installe-la sur ton téléphone ou ta tablette
@@ -209,7 +209,7 @@
 208|Sticker {name}
 209|Supporter
 210|Le pack {pack} est inclus avec Supporter.
-211|Touche la page pour le placer. Les boutons de taille changent sa taille.
+211|Touche la page pour le placer, puis fais-le glisser. Pince ou utilise la poignée du coin pour le redimensionner et le tourner. Touche ✓ quand c’est bon.
 212|{pack} : {count}, inclus dans le déblocage Supporter unique.
 213|Voir Supporter
 214|une page toute neuve
@@ -350,7 +350,7 @@
 349|J'ai supprimé quelque chose par erreur.
 350|Va dans Réglages, puis « Supprimés récemment ». Les projets, photos, activités et dessins y restent pendant 30 jours.
 351|Que comprend Supporter ?
-352|Trois thèmes en plus, plus de polices, des finitions de stickers, trois packs de stickers et les futurs bonus, pour un prix unique. Tout le reste de Doodle Days reste gratuit.
+352|Trois thèmes en plus, plus de polices, des finitions de stickers, quatre packs de stickers et les futurs bonus, pour un prix unique. Tout le reste de Doodle Days reste gratuit.
 353|Le verrouillage par code PIN est-il sûr ?
 354|Le code PIN empêche les autres d'ouvrir l'appli sur ton appareil. Il ne chiffre pas tes entrées, alors garde aussi le verrouillage d'écran de ton appareil activé.
 355|Comment changer la langue ?
@@ -551,7 +551,7 @@ P|nNoteResults|{n} note|{n} notes
 528|Packs d’icônes
 529|Sans icône
 530|{pack} : {count}, inclus dans Supporter.
-531|Trois thèmes en plus, plus de polices, des finitions de stickers, trois packs de stickers, des packs d’icônes et les extras à venir. Paie au mois, à l’année ou une fois pour toujours. Tout le reste de Doodle Days reste gratuit.
+531|Trois thèmes en plus, plus de polices, des finitions de stickers, quatre packs de stickers, des packs d’icônes et les extras à venir. Paie au mois, à l’année ou une fois pour toujours. Tout le reste de Doodle Days reste gratuit.
 532|Mensuel
 533|Annuel
 534|À vie
@@ -602,3 +602,8 @@ P|nNoteResults|{n} note|{n} notes
 578|Seulement {price} par mois, {pct} % de réduction
 579|Tout ce que nous ajouterons plus tard, comme des thèmes, des stickers, des packs d’icônes et plus, sans frais en plus
 580|Tous les extras à venir inclus
+581|Retirer le sticker
+582|Placer le sticker
+583|Ligné
+584|Halloween
+585|Saison frissons
