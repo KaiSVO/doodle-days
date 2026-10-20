@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.kaisvo.doodledays",
+        "sha256_cert_fingerprints": ["92:A9:E3:DB:80:A3:77:AB:2D:FF:67:59:44:9A:C8:DE:88:2B:B5:D5:B8:A5:0E:13:B5:1D:F9:95:26:8A:32:8E"]
+      }
+    }]
