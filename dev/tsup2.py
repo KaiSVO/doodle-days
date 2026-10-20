@@ -22,13 +22,13 @@ async def main():
         # brushes & papers
         for n,paper in [(13,1),(14,2),(15,3)]:
             await pg.click(f'.day >> nth={n}'); await pg.wait_for_timeout(400)
-            await pg.click('.tool:has-text("Pen")'); await pg.click(f'#paperPick .pp >> nth={paper}'); await pg.wait_for_timeout(200)
+            await pg.click('#tools [aria-label=Pen]'); await pg.click(f'#tools .tpop .pp >> nth={paper}'); await pg.wait_for_timeout(200)
             bx=await pg.locator('#pad').bounding_box(); X,Y,W,H=bx['x'],bx['y'],bx['width'],bx['height']
-            await ink(pg,'#3A7BD5'); await pg.click('.tool:has-text("Watercolour")'); await pg.click('#tools .size >> nth=2'); await stroke(pg,[(X+W*.08,Y+H*.25),(X+W*.3,Y+H*.18),(X+W*.55,Y+H*.3),(X+W*.85,Y+H*.2)])
-            await ink(pg,'#D9577A'); await pg.click('.tool:has-text("Watercolour")'); await stroke(pg,[(X+W*.1,Y+H*.45),(X+W*.4,Y+H*.55),(X+W*.7,Y+H*.42),(X+W*.9,Y+H*.5)])
-            await ink(pg,'#E9A23B'); await pg.click('.tool:has-text("Watercolour")'); await stroke(pg,[(X+W*.15,Y+H*.35),(X+W*.45,Y+H*.4)])
-            await ink(pg,'#3E9B6E'); await pg.click('.tool:has-text("Crayon")'); await pg.click('#tools .size >> nth=1'); await stroke(pg,[(X+W*.08,Y+H*.75),(X+W*.3,Y+H*.68),(X+W*.5,Y+H*.8),(X+W*.75,Y+H*.7),(X+W*.92,Y+H*.78)])
-            await ink(pg,'#8A5CC7'); await pg.click('.tool:has-text("Crayon")'); await stroke(pg,[(X+W*.12,Y+H*.88),(X+W*.5,Y+H*.9),(X+W*.85,Y+H*.86)])
+            await ink(pg,'#3A7BD5'); await pg.click('#tools [aria-label=Watercolour]'); await pg.click('#tools .t1 ~ .trow .ib >> nth=0'); await stroke(pg,[(X+W*.08,Y+H*.25),(X+W*.3,Y+H*.18),(X+W*.55,Y+H*.3),(X+W*.85,Y+H*.2)])
+            await ink(pg,'#D9577A'); await pg.click('#tools [aria-label=Watercolour]'); await stroke(pg,[(X+W*.1,Y+H*.45),(X+W*.4,Y+H*.55),(X+W*.7,Y+H*.42),(X+W*.9,Y+H*.5)])
+            await ink(pg,'#E9A23B'); await pg.click('#tools [aria-label=Watercolour]'); await stroke(pg,[(X+W*.15,Y+H*.35),(X+W*.45,Y+H*.4)])
+            await ink(pg,'#3E9B6E'); await pg.click('#tools [aria-label=Crayon]'); await pg.click('#tools .t1 ~ .trow .ib >> nth=0'); await stroke(pg,[(X+W*.08,Y+H*.75),(X+W*.3,Y+H*.68),(X+W*.5,Y+H*.8),(X+W*.75,Y+H*.7),(X+W*.92,Y+H*.78)])
+            await ink(pg,'#8A5CC7'); await pg.click('#tools [aria-label=Crayon]'); await stroke(pg,[(X+W*.12,Y+H*.88),(X+W*.5,Y+H*.9),(X+W*.85,Y+H*.86)])
             await pg.wait_for_timeout(400)
             await pg.locator('#pad').locator('..').screenshot(path=f'sup/brush-{paper}.png')
             if n==13: await pg.locator('#tools').screenshot(path='sup/tools.png'); await pg.locator('.doodle-head').screenshot(path='sup/paperpick.png')

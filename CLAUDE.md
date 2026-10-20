@@ -19,16 +19,16 @@ python3 i18n_build.py       # must print "bad 0"
 python3 build.py            # writes dev/dist/index.html
 cp dist/index.html ../index.html
 ```
-Then bump `APP_VERSION` in `src.html` (currently 3.10) and the cache name in `../sw.js` (currently `doodle-days-v36`) every release, or phones keep the old version.
+Then bump `APP_VERSION` in `src.html` (currently 3.11) and the cache name in `../sw.js` (currently `doodle-days-v37`) every release, or phones keep the old version.
 New UI text: add the English string to `src.html` (wrapped in `tx('…')` for JS), append it to `i18n_keys.json` `s`, and add `index|translation` lines to all seven `i18n/*.txt`. Ukrainian uses the polite "ви", Russian the polite "вы"; es/pt/de/fr/pl use informal you. Literal string edits: the I18N JSON inside src.html also contains English keys, so anchor replacements on code, not on bare strings.
-Checks worth running after UI changes: `t47.py` (floating stickers: place, pinch/twist, ✓, two-finger undo), `t48.py` (toolbar layout + paper trays), `t49.py` (note paper), `t50.py` (Halloween pack + paper), `t42.py` (overlap/clipping sweep, 8 languages, phone + desktop), `t45.py` (contrast in every theme/accent), `t41.py` (saved month/year/day images), `t44.py` (icons + Supporter billing with a mocked Play), `t43.py` (share calendar), `t37.py` (guided tour).
+Checks worth running after UI changes: `t47.py` (floating stickers: place, pinch/twist, ✓, two-finger undo), `t48.py` (toolbar layout + paper trays), `t49.py` (note paper), `t50.py` (Halloween pack + paper), `t51.py` (note brushes, free vs Supporter), `t42.py` (overlap/clipping sweep, 8 languages, phone + desktop), `t45.py` (contrast in every theme/accent), `t41.py` (saved month/year/day images), `t44.py` (icons + Supporter billing with a mocked Play), `t43.py` (share calendar), `t37.py` (guided tour).
 
 ## Product decisions (keep)
 - Everything stays on the device (IndexedDB); no analytics, no server. Privacy policy says so.
 - Trackers are called **Activities**. Plans show a triangle or the plan's icon.
 - Themes: Candy pop (bubbly, polka dots, sticker-edged cells, lime active tab), Pixel quest, Classic (paper planner: ruled paper, joined grid, square corners) are free; Scrapbook, Cosy garden, Midnight rose are Supporter. `inkGuard()` keeps all text ≥4.5:1 contrast for any theme/accent.
 - Theme fonts lacking Cyrillic/Polish have companions in the stacks (Nunito, Caveat, Lora, IBM Plex Mono, Press Start 2P).
-- Drawing toolbar (day + notes): row 1 icon tools + Undo + ⋯ (Clear, Stylus only); row 2 colours + size button (cycles) + paper button (day only). Note paper button sits next to Type/Draw so it works in both modes; default note paper is "Lined".
+- Drawing toolbar (day + notes, same brushes in both; watercolour + crayon are Supporter): row 1 icon tools + Undo + ⋯ (Clear, Stylus only); row 2 colours + size button (cycles) + paper button (day only). Note paper button sits next to Type/Draw so it works in both modes; default note paper is "Lined".
 - Stickers float after placing: drag to move, pinch/twist or corner handle to resize and rotate, ✓ to stick, ✕ to remove (`stickerFloat()` in src.html).
 - Papers: Plain/Lined free; Kraft, Grid, Dots, Halloween Supporter. Sticker packs: Starter free; Spooky season (Halloween, `dev/halloween.py` draws it), Botanical, Market day, Cosy season Supporter.
 - Sticker finishes: Classic + Vinyl free; Hand-painted, Paper cut-out, Enamel pin Supporter. Picker lives in the sticker trays.

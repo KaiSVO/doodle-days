@@ -650,6 +650,8 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .nd-title:focus{outline:none;border-bottom:2px solid var(--accent)!important}
 .nd-tools{display:flex;flex-direction:column;gap:8px}
 .nd-tools .sw{width:24px;height:24px}
+.nd-tools .trow{gap:5px}.nd-tools .ib{width:34px;height:34px}
+.trow.t1{flex-wrap:nowrap}.trow.t1 .ib{flex:0 1 36px;width:auto;min-width:0;height:auto;aspect-ratio:1}.trow.t1 .grow{min-width:4px}
 .nd-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 .gs-filters{display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line);margin-top:6px;padding-top:10px}
 .gf-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
@@ -1216,7 +1218,7 @@ const INKS=["#2B2B2B","#3A7BD5","#D9577A","#E9A23B","#3E9B6E","#8A5CC7","#C4683A
 const SIZES=[3,7,14];
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const narrow=()=>matchMedia('(max-width:999.98px)').matches;
-const APP_VERSION='3.10';
+const APP_VERSION='3.11';
 const CONTACT_EMAIL='sidelock24@gmail.com';
 const PLAY_ID='io.github.kaisvo.doodledays';  // Play Store package name
 const DAY=864e5;
@@ -2344,33 +2346,38 @@ function applyNPaper(){const n=S.notes[noteId], b=paperBg((n&&n.paper)||'');
   $('#ndPaper').replaceChildren(btn); const tr=$('#ndPaperTray'); tr.hidden=!nPaperOpen;
   tr.replaceChildren(...(nPaperOpen?[h('span',{class:'qlabel'},tx('Paper')),...paperBtns(id,pid=>{const m=S.notes[noteId];if(!m)return;if(pid)m.paper=pid;else delete m.paper;nPaperOpen=false;applyNPaper();noteChanged();},'Lined')]:[])); if(nPaperOpen) tr.querySelector('.pp').style.cssText=LINED;}
 function buildNoteTools(){
-  const row1=[...[['pen','Pen'],['marker','Marker'],['eraser','Eraser'],['sticker','Stickers']].map(([id,lab])=>ib(tx(lab),id==='sticker'?h('img',{src:stSrc(STICKERS[0]),alt:''}):ticon(id),{on:nTool===id,cls:(id==='sticker'?' tool-stk':'')+(nTool===id?' on':''),
-      go:()=>{noteFloat.commit();nTool=id;nPop=false;if(id==='sticker'&&!sticker)sticker=STICKERS[0].id;buildNoteTools();}})),
+  const row1=[...[['pen','Pen'],['marker','Marker'],['water','Watercolour'],['crayon','Crayon'],['eraser','Eraser'],['sticker','Stickers']].map(([id,lab])=>ib(tx(lab),id==='sticker'?h('img',{src:stSrc(STICKERS[0]),alt:''}):ticon(id),{on:nTool===id,cls:(id==='sticker'?' tool-stk':'')+(PAID_TOOLS.includes(id)&&!unlocked()?' paid':'')+(nTool===id?' on':''),
+      go:()=>{if(PAID_TOOLS.includes(id)&&!unlocked()){toast(tx('{name} comes with Supporter.',{name:tx(lab)}),3000);return;}noteFloat.commit();nTool=id;nPop=false;if(id==='sticker'&&!sticker)sticker=STICKERS[0].id;buildNoteTools();}})),
     h('span',{class:'grow'}),
     ib(tx('Undo'),ticon('undo'),{go:()=>{if(noteFloat.active()){noteFloat.cancel();return;}if(!nUndo.length)return;const im=nUndo.pop();if(im.height===npad.height)nctx.putImageData(im,0,0);noteChanged();}}),
     ib(tx('More'),ticon('more'),{cls:nPop==='more'?' on':'',go:()=>{nPop=nPop==='more'?false:'more';buildNoteTools();}})];
   const si=SIZES.indexOf(nSize);
   const row2=[...INKS.map(c=>h('button',{type:'button',class:'sw'+(c===nInk?' on':''),style:`background:${c}`,'aria-label':tx('Colour'),'aria-pressed':String(c===nInk),onclick:()=>{nInk=c;if(nTool==='eraser')nTool='pen';buildNoteTools();}})),
     h('span',{class:'grow'}),ib([tx('Small'),tx('Medium'),tx('Large')][si],sizeDot(nSize),{go:()=>{nSize=SIZES[(si+1)%SIZES.length];buildNoteTools();}})];
-  const kids=[h('div',{class:'trow'},row1),h('div',{class:'trow'},row2)];
+  const kids=[h('div',{class:'trow t1'},row1),h('div',{class:'trow'},row2)];
   if(nPop==='more'){const clr=h('button',{type:'button',class:'tool'},tx('Clear'));clr.onclick=()=>armed(clr,tx('Clear?'),()=>{nPush();nctx.clearRect(0,0,npad.width,npad.height);noteChanged();nPop=false;buildNoteTools();});kids.push(h('div',{class:'tpop'},clr));}
   $('#noteTools').replaceChildren(...kids); $('#noteTray').hidden=nTool!=='sticker'; if(nTool==='sticker') buildTray();
 }
 function nPush(){try{nUndo.push(nctx.getImageData(0,0,npad.width,npad.height));if(nUndo.length>10)nUndo.shift();}catch(e){}}
 const nPos=ev=>{const r=npad.getBoundingClientRect();return {x:(ev.clientX-r.left)*NW/r.width,y:(ev.clientY-r.top)*NW/r.width};};
-const nW=ev=>{const b=(nTool==='eraser'||nTool==='marker'?nSize*4:nSize)*1.6;return b*(ev.pointerType==='pen'&&ev.pressure?(.4+ev.pressure*1.2):1);};
+let nWetW=10;
+const nW=ev=>{const b=(nTool==='eraser'||nTool==='marker'?nSize*4:nTool==='water'?nSize*5.2:nTool==='crayon'?nSize*2.6:nSize)*1.6;return b*(ev.pointerType==='pen'&&ev.pressure?(.4+ev.pressure*1.2):1);};
 page.addEventListener('pointerdown',ev=>{
   if(nMode!=='draw'||nDraw) return; ev.preventDefault(); try{page.setPointerCapture(ev.pointerId);}catch(e){}
   if(nTool==='sticker'){if(noteFloat.holding()){noteFloat.grab(ev);return;}const img=stickerImg[sticker],p=nPos(ev);if(!img||!img.complete)return;
     noteFloat.place(p,img,[130,200,290][SIZES.indexOf(nSize)]*(curFin()==='flat'?1:1.28));noteFloat.grab(ev);return;}
-  nPush();nDraw=true;nPid=ev.pointerId;const p=nPos(ev);nLast=p;nPts=[p];nSnap=nTool==='marker'?nUndo[nUndo.length-1]:null;
+  nPush();nDraw=true;nPid=ev.pointerId;const p=nPos(ev);nLast=p;nPts=[p];nSnap=nTool==='marker'||nTool==='water'?nUndo[nUndo.length-1]:null;
   nctx.globalCompositeOperation=nTool==='eraser'?'destination-out':'source-over';
-  if(nTool!=='marker') inkDot(nctx,nInk,p,nW(ev));});
+  if(nTool==='water'){nWetW=nW(ev);nWet();}
+  else if(nTool!=='marker') inkDot(nctx,nTool==='crayon'?crayonPat(nInk):nInk,p,nW(ev));});
+const nWet=()=>renderWet(nctx,nInk,nSnap&&nSnap.height===npad.height?nSnap:null,nPts,nWetW);
 page.addEventListener('pointermove',ev=>{if(!nDraw||ev.pointerId!==nPid)return;
   for(const e of (ev.getCoalescedEvents?ev.getCoalescedEvents():[ev])){const p=nPos(e);
-    if(nTool==='marker'){nPts.push(p);inkMarker(nctx,nInk,nPts,nW(e),nSnap&&nSnap.height===npad.height?nSnap:null);}
-    else inkLine(nctx,nInk,nLast,p,nW(e));
-    nLast=p;}});
+    if(nTool==='water'){nPts.push(p);nWetW=nWetW*.8+nW(e)*.2;}
+    else if(nTool==='marker'){nPts.push(p);inkMarker(nctx,nInk,nPts,nW(e),nSnap&&nSnap.height===npad.height?nSnap:null);}
+    else inkLine(nctx,nTool==='crayon'?crayonPat(nInk):nInk,nLast,p,nW(e));
+    nLast=p;}
+  if(nTool==='water') nWet();});
 const nEnd=ev=>{if(!nDraw||(ev&&ev.pointerId!==nPid))return;nDraw=false;nSnap=null;nctx.globalAlpha=1;nctx.globalCompositeOperation='source-over';
   if(nLast&&nLast.y>npad.height-120){nResize(npad.height+400);nFit();} noteChanged();};
 page.addEventListener('pointerup',nEnd);page.addEventListener('pointercancel',nEnd);
@@ -2457,7 +2464,7 @@ function buildTools(){
     ib([tx('Small'),tx('Medium'),tx('Large')][si],sizeDot(size),{go:()=>{const i=(si+1)%SIZES.length;size=SIZES[i];if(tool==='sticker')dayFloat.resize((curFin()==='flat'?1:1.28)*[70,120,190][i]);buildTools();}}),
     ib(tx('Paper'),'',{cls:tPop==='paper'?' on':'',go:togg('paper')}));
   const paperB=row2[row2.length-1]; paperB.style.cssText=`background-color:${pb?pb.c:'#FFFDF8'};${pb?`background-image:${pb.i};background-size:${thumbSz((S.days[sel]&&S.days[sel].paper)||'')}`:''}`;
-  const kids=[h('div',{class:'trow'},row1),h('div',{class:'trow'},row2)];
+  const kids=[h('div',{class:'trow t1'},row1),h('div',{class:'trow'},row2)];
   if(tPop==='paper') kids.push(h('div',{class:'tpop',role:'group','aria-label':tx('Paper')},h('span',{class:'qlabel'},tx('Paper')),paperBtns()));
   if(tPop==='more'){const clr=h('button',{type:'button',class:'tool'},tx('Clear')); clr.onclick=()=>armed(clr,tx('Clear?'),()=>{clearDoodle();tPop=null;buildTools();});
     kids.push(h('div',{class:'tpop'},penSeen?h('button',{type:'button',class:'tool'+(S.meta.penOnly?' on':''),title:tx('Ignore fingers and palms while drawing'),onclick:()=>{S.meta.penOnly=!S.meta.penOnly;saveMeta();buildTools();toast(S.meta.penOnly?tx('Stylus only: your palm and fingers won’t draw.'):tx('Fingers can draw again.'));}},tx('Stylus only')):null,clr));}
@@ -2592,21 +2599,22 @@ function grain(){ if(grainPat) return grainPat; const g=document.createElement('
 function crayonPat(col){ if(crayonCache[col]) return crayonCache[col]; const g=document.createElement('canvas'); g.width=g.height=64; const gx=g.getContext('2d');
   gx.fillStyle=col; for(let y=0;y<64;y++)for(let x=0;x<64;x++){const r=Math.random(); if(r<.62){gx.globalAlpha=.55+r*.7; gx.fillRect(x,y,1,1);}}
   for(let i=0;i<14;i++){gx.globalAlpha=.25; gx.fillRect(0,Math.random()*64,64,1);} return crayonCache[col]=ctx.createPattern(g,'repeat'); }
-function wetDabs(c,scale){ // overlapping dabs with a slowly wobbling radius give the wash an uneven, natural edge
-  let dist=0; const R=wetW/2;
+function wetDabs(c,scale,pts,W){ // overlapping dabs with a slowly wobbling radius give the wash an uneven, natural edge
+  let dist=0; const R=W/2;
   const dab=(x,y)=>{const r=R*scale*(.9+.08*Math.sin(dist*.028)+.03*Math.sin(dist*.09+1.3));c.beginPath();c.arc(x,y,Math.max(1,r),0,Math.PI*2);c.fill();};
   dab(pts[0].x,pts[0].y);
   for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],L=Math.hypot(b.x-a.x,b.y-a.y),st=Math.max(1.2,R*.1);
     for(let t=st;t<=L;t+=st){dist+=st;dab(a.x+(b.x-a.x)*t/L,a.y+(b.y-a.y)*t/L);} }
 }
-function renderWet(){
-  if(!pts.length) return;
-  wctx.globalCompositeOperation='source-over'; wctx.clearRect(0,0,900,600); wctx.fillStyle=ink; wetDabs(wctx,1);
-  wctx.globalCompositeOperation='destination-out'; wctx.fillStyle=grain(); wctx.fillRect(0,0,900,600);
-  if(snap) ctx.putImageData(snap,0,0);
-  ctx.globalCompositeOperation='source-over'; ctx.globalAlpha=.34; ctx.drawImage(wet,0,0);
-  wctx.globalCompositeOperation='destination-out'; wctx.fillStyle='#000'; wetDabs(wctx,.8);
-  ctx.globalAlpha=.16; ctx.drawImage(wet,0,0); ctx.globalAlpha=1;
+function renderWet(c=ctx,col=ink,sn=snap,P=pts,W=wetW){
+  if(!P.length) return; const cw=c.canvas.width, ch=c.canvas.height;
+  if(wet.width!==cw||wet.height!==ch){wet.width=cw;wet.height=ch;}
+  wctx.globalCompositeOperation='source-over'; wctx.clearRect(0,0,cw,ch); wctx.fillStyle=col; wetDabs(wctx,1,P,W);
+  wctx.globalCompositeOperation='destination-out'; wctx.fillStyle=grain(); wctx.fillRect(0,0,cw,ch);
+  if(sn) c.putImageData(sn,0,0);
+  c.globalCompositeOperation='source-over'; c.globalAlpha=.34; c.drawImage(wet,0,0);
+  wctx.globalCompositeOperation='destination-out'; wctx.fillStyle='#000'; wetDabs(wctx,.8,P,W);
+  c.globalAlpha=.16; c.drawImage(wet,0,0); c.globalAlpha=1;
 }
 
 const endStroke=ev=>{if(!drawing||(ev&&ev.pointerId!==pid))return;drawing=false;snap=null;ctx.globalAlpha=1;ctx.globalCompositeOperation='source-over';redo=[];storeDoodle();afterStroke();};
