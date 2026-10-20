@@ -19,9 +19,9 @@ python3 i18n_build.py       # must print "bad 0"
 python3 build.py            # writes dev/dist/index.html
 cp dist/index.html ../index.html
 ```
-Then bump `APP_VERSION` in `src.html` (currently 3.11) and the cache name in `../sw.js` (currently `doodle-days-v37`) every release, or phones keep the old version.
+Then bump `APP_VERSION` in `src.html` (currently 3.11.1) and the cache name in `../sw.js` (currently `doodle-days-v38`) every release, or phones keep the old version.
 New UI text: add the English string to `src.html` (wrapped in `tx('…')` for JS), append it to `i18n_keys.json` `s`, and add `index|translation` lines to all seven `i18n/*.txt`. Ukrainian uses the polite "ви", Russian the polite "вы"; es/pt/de/fr/pl use informal you. Literal string edits: the I18N JSON inside src.html also contains English keys, so anchor replacements on code, not on bare strings.
-Checks worth running after UI changes: `t47.py` (floating stickers: place, pinch/twist, ✓, two-finger undo), `t48.py` (toolbar layout + paper trays), `t49.py` (note paper), `t50.py` (Halloween pack + paper), `t51.py` (note brushes, free vs Supporter), `t42.py` (overlap/clipping sweep, 8 languages, phone + desktop), `t45.py` (contrast in every theme/accent), `t41.py` (saved month/year/day images), `t44.py` (icons + Supporter billing with a mocked Play), `t43.py` (share calendar), `t37.py` (guided tour).
+Checks worth running after UI changes: `t47.py` (floating stickers: place, pinch/twist, ✓, two-finger undo), `t48.py` (toolbar layout + paper trays), `t49.py` (note paper), `t50.py` (Halloween pack + paper), `t51.py` (note brushes, free vs Supporter), `t52.py` (note hint hides after drawing), `t42.py` (overlap/clipping sweep, 8 languages, phone + desktop), `t45.py` (contrast in every theme/accent), `t41.py` (saved month/year/day images), `t44.py` (icons + Supporter billing with a mocked Play), `t43.py` (share calendar), `t37.py` (guided tour).
 
 ## Product decisions (keep)
 - Everything stays on the device (IndexedDB); no analytics, no server. Privacy policy says so.

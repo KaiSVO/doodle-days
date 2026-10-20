@@ -680,6 +680,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .rte{position:relative;min-height:110px;border:1px solid var(--line);background:var(--surface-2);border-radius:10px;padding:10px 12px;line-height:1.5;outline:none;overflow-wrap:anywhere;-webkit-user-select:text;user-select:text}
 .rte:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .rte.is-empty::before{content:attr(data-ph);color:var(--muted);pointer-events:none;position:absolute}
+.nd-page.inked .rte.is-empty::before{content:none}
 .rte h2{font-size:1.3rem;margin:.3em 0 .15em;line-height:1.2}.rte h3{font-size:1.08rem;margin:.3em 0 .1em;line-height:1.25}
 .rte ul,.rte ol{margin:.2em 0;padding-left:1.4em}
 .rte ul.checks{list-style:none;padding-left:.2em}
@@ -1226,7 +1227,7 @@ const INKS=["#2B2B2B","#3A7BD5","#D9577A","#E9A23B","#3E9B6E","#8A5CC7","#C4683A
 const SIZES=[3,7,14];
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const narrow=()=>matchMedia('(max-width:999.98px)').matches;
-const APP_VERSION='3.11';
+const APP_VERSION='3.11.1';
 const CONTACT_EMAIL='sidelock24@gmail.com';
 const PLAY_ID='io.github.kaisvo.doodledays';  // Play Store package name
 const DAY=864e5;
@@ -2471,7 +2472,7 @@ const nEnd=ev=>{if(!nDraw||(ev&&ev.pointerId!==nPid))return;nDraw=false;nSnap=nu
   if(nLast&&nLast.y>npad.height-120){nResize(npad.height+400);nFit();} noteChanged();};
 page.addEventListener('pointerup',nEnd);page.addEventListener('pointercancel',nEnd);
 function nBlank(){const d=nctx.getImageData(0,0,npad.width,npad.height).data;for(let i=3;i<d.length;i+=32)if(d[i])return false;return true;}
-function noteChanged(){nDirty=true;clearTimeout(noteTimer);noteTimer=setTimeout(flushNote,400);}
+function noteChanged(){nDirty=true;if(nMode==='draw')page.classList.toggle('inked',!nBlank());clearTimeout(noteTimer);noteTimer=setTimeout(flushNote,400);}
 function flushNote(){clearTimeout(noteTimer);noteTimer=null;const n=S.notes[noteId];if(!n||!nDirty)return;nDirty=false;
   n.title=$('#noteTitle').value.trim();n.text=rtText(ned);n.html=n.text?rtClean(ned.innerHTML):'';n.doodle=nBlank()?null:npad.toDataURL('image/png');n.updated=Date.now();
   if(!n.title&&!n.text&&!n.doodle){delete S.notes[n.id];DB.del('n:'+n.id);} else saveNote(n);}
@@ -2485,7 +2486,7 @@ async function openNote(id,fresh){
   openModal('#noteModal'); nPop=false; nPaperOpen=false; applyNPaper(); setNMode('type');
   npad.height=NMIN; nctx=npad.getContext('2d'); nPrep(); nctx.clearRect(0,0,NW,npad.height);
   if(n.doodle){const im=await loadImg(n.doodle);if(im){const sc=im.width===900?NW/900:NW/im.width,hh=Math.ceil(im.height*sc);if(hh>npad.height){npad.height=hh;nctx=npad.getContext('2d');nPrep();}nctx.drawImage(im,0,0,im.width*sc,hh);}}
-  nFit(); if(fresh) setTimeout(()=>$('#noteTitle').focus(),60);
+  page.classList.toggle('inked',!!n.doodle); nFit(); if(fresh) setTimeout(()=>$('#noteTitle').focus(),60);
 }
 function closeNote(){if(!noteId)return;noteFloat.commit();nDirty=true;flushNote();closeModal('#noteModal');noteId=null;if(view==='notes')renderNotes();}
 $('#noteTitle').addEventListener('input',noteChanged);
